@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLocationDot, faPhone, faEnvelope,
-  faShieldHalved, faWrench, faClock, faSnowflake,
+  faShieldHalved, faAward, faClipboardCheck, faLayerGroup,
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import styles from './styles.module.scss';
@@ -12,6 +12,7 @@ import { useTrackEvent } from '&/useTrackEvent';
 const NAV_LINKS = [
   { href: '/',               label: 'Home' },
   { href: '/services',       label: 'Services' },
+  { href: '/projects',       label: 'Projects' },
   { href: '/about',          label: 'About' },
   { href: '/blogs',          label: 'Blog' },
   { href: '/contact',        label: 'Get a Quote' },
@@ -19,30 +20,30 @@ const NAV_LINKS = [
 ];
 
 const SERVICE_LINKS = [
-  { href: '/services/ac-repair',          label: 'AC Repair' },
-  { href: '/services/heating',            label: 'Heating Service' },
-  { href: '/services/installation',       label: 'New Installation' },
-  { href: '/services/maintenance',        label: 'Maintenance Plans' },
-  { href: '/services/duct-cleaning',      label: 'Duct Cleaning' },
-  { href: '/services/indoor-air-quality', label: 'Indoor Air Quality' },
+  { href: '/services/garage-epoxy',          label: 'Garage Epoxy' },
+  { href: '/services/metallic-epoxy',        label: 'Metallic Epoxy' },
+  { href: '/services/flake-systems',         label: 'Flake Systems' },
+  { href: '/services/commercial-epoxy',      label: 'Commercial Epoxy' },
+  { href: '/services/concrete-polish',       label: 'Concrete Polish' },
+  { href: '/services/floor-repair-recoat',   label: 'Floor Repair & Recoat' },
 ];
 
 const LOCAL_AREAS = [
   'Waco, TX', 'Hewitt, TX', 'Woodway, TX',
-  'Robinson, TX', 'China Spring, TX', 'Temple, TX',
-  'Killeen, TX', 'Hillsboro, TX',
+  'Bellmead, TX', 'China Spring, TX', 'Temple, TX',
+  'Killeen, TX', 'McGregor, TX',
 ];
 
 const TRUST_ITEMS = [
-  { icon: faShieldHalved, label: 'Licensed & Insured' },
-  { icon: faWrench,       label: 'NATE Certified' },
-  { icon: faClock,        label: 'Same-Day Service' },
-  { icon: faSnowflake,    label: '1-Yr Warranty' },
+  { icon: faShieldHalved,     label: 'Certified Coatings · Bonded & Insured' },
+  { icon: faAward,            label: 'Certified Coatings Installers' },
+  { icon: faClipboardCheck,   label: 'Free Quotes' },
+  { icon: faLayerGroup,       label: '5-Yr Warranty' },
 ];
 
 const SOCIALS = [
-  { href: 'https://facebook.com/arcticairhvac', icon: faFacebookF, label: 'Facebook' },
-  { href: 'https://g.page/r/arcticairhvac',     icon: faGoogle,    label: 'Google' },
+  { href: 'https://facebook.com/polycoatfloors', icon: faFacebookF, label: 'Facebook' },
+  { href: 'https://g.page/r/polycoatfloors',      icon: faGoogle,    label: 'Google' },
 ];
 
 export default function Footer() {
@@ -65,7 +66,7 @@ export default function Footer() {
             className={styles.trustCta}
             onClick={() => trackEvent({ eventType: 'click', elementLabel: 'Book Now', section: 'Footer-Trust' })}
           >
-            Book a Tech Today →
+            Get a Free Quote →
           </Link>
         </div>
       </div>
@@ -79,38 +80,35 @@ export default function Footer() {
             <Link href="/" className={styles.logo}>
               <span className={styles.logoMark}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="12" y1="2" x2="12" y2="22"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <polyline points="8 6 12 2 16 6"/>
-                  <polyline points="8 18 12 22 16 18"/>
-                  <polyline points="6 8 2 12 6 16"/>
-                  <polyline points="18 8 22 12 18 16"/>
+                  <rect x="3" y="3" width="18" height="18" rx="1"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="9" y1="21" x2="9" y2="9"/>
                 </svg>
               </span>
               <div className={styles.logoText}>
-                <span className={styles.logoName}>Arctic Air HVAC</span>
+                <span className={styles.logoName}>PolyCoat Floors</span>
                 <span className={styles.logoSub}>Waco, Texas</span>
               </div>
             </Link>
 
             <p className={styles.tagline}>
-              Flat-rate pricing. Same-day service. Zero contracts — ever. Serving Central Texas homeowners since 2010.
+              Garage Epoxy · Metallic · Commercial Floors done right for Central Texas homes and businesses. Flat-rate quotes and a 5-Year Coating Warranty since 2014.
             </p>
 
             <div className={styles.contactBlock}>
-              <a href="tel:+12549001234" className={styles.phoneLink}
+              <a href="tel:+12549801919" className={styles.phoneLink}
                 onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Footer Phone', section: 'Footer-Brand' })}>
                 <FontAwesomeIcon icon={faPhone} />
-                (254) 900-1234
+                (254) 980-1919
               </a>
-              <a href="mailto:contact@arcticairhvac.com" className={styles.emailLink}
+              <a href="mailto:hello@polycoatfloors.com" className={styles.emailLink}
                 onClick={() => trackEvent({ eventType: 'email_click', elementLabel: 'Footer Email', section: 'Footer-Brand' })}>
                 <FontAwesomeIcon icon={faEnvelope} />
-                contact@arcticairhvac.com
+                hello@polycoatfloors.com
               </a>
               <span className={styles.addressLine}>
                 <FontAwesomeIcon icon={faLocationDot} />
-                4521 Bosque Blvd, Waco, TX 76710
+                3300 Lake Air Dr, Waco, TX 76710
               </span>
             </div>
 
@@ -176,12 +174,12 @@ export default function Footer() {
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
           <p className={styles.copyright}>
-            &copy; {new Date().getFullYear()} Arctic Air HVAC. All Rights Reserved. | TDLR License #XXXXXXXX
+            &copy; {new Date().getFullYear()} PolyCoat Floors. All Rights Reserved. | Certified Coatings Installers · Bonded & Insured
           </p>
-          <a href="tel:+12549001234" className={styles.emergencyBtn}
-            onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: '24/7 Emergency', section: 'Footer-Bottom' })}>
+          <a href="tel:+12549801919" className={styles.emergencyBtn}
+            onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Call Now', section: 'Footer-Bottom' })}>
             <span className={styles.emergencyDot} />
-            24/7 Emergency Line
+            Call (254) 980-1919
           </a>
         </div>
       </div>

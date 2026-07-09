@@ -40,7 +40,7 @@
      This is the color the iPhone notch, home indicator, and overscroll
      bounce areas all show. Matches the dark surfaces used across the app
      (Header, Footer, Hero) so the chrome is seamless with the content. */
-  --brand-bg: #0d1b2a;
+  --brand-bg: #1a1025;
 
   /* ── Safe-area aliases ────────────────────────────────────────────────────
      Defined as variables so component-level SCSS can reference them

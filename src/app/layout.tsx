@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-// Arctic Air HVAC — root layout
+// PolyCoat Floors — root layout
 //
 // MOBILE / SAFE-AREA FIX:
 //   Added a Next.js 14+ `viewport` export with:
@@ -9,10 +9,8 @@
 //                                the rest of the safe-area CSS in globals.css
 //                                does NOTHING — that's why you were seeing
 //                                white bars on top and bottom on iPhone.
-//     - themeColor: '#0d1b2a' → tints the iOS Safari URL bar / Android
+//     - themeColor: '#1a1025' → tints the iOS Safari URL bar / Android
 //                                status bar to match the brand obsidian dark.
-//                                Two values supplied so Safari can pick the
-//                                right one for light vs dark mode.
 //     - colorScheme: 'dark'   → tells the browser to render its own UI chrome
 //                                (form pickers, scrollbars, etc.) in dark mode.
 //
@@ -60,24 +58,17 @@ const aBeeZee = ABeeZee({
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
-  ? "https://www.arcticairhvac.com"
+  ? "https://www.polycoatfloors.com"
   : "http://localhost:3000";
 
 // ── VIEWPORT ──────────────────────────────────────────────────────────────────
-// Next.js 14+ moved viewport / themeColor / colorScheme out of `metadata` and
-// into a separate `viewport` export. The `viewportFit: 'cover'` is the single
-// most important line in this file for the notch / home-indicator fix.
 export const viewport: Viewport = {
   width:        "device-width",
   initialScale: 1,
   viewportFit:  "cover",
-  // Two themeColor entries so iOS Safari can pick the right one when the user
-  // toggles light/dark mode. Both are obsidian dark to match the brand bg
-  // applied to <body> in globals.css. Adjust if you want a lighter Safari
-  // chrome tint for light-mode users.
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0d1b2a" },
-    { media: "(prefers-color-scheme: dark)",  color: "#0d1b2a" },
+    { media: "(prefers-color-scheme: light)", color: "#1a1025" },
+    { media: "(prefers-color-scheme: dark)",  color: "#1a1025" },
   ],
   colorScheme: "dark",
 };
@@ -85,42 +76,42 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
-    template: "%s | Arctic Air HVAC",
+    default: "PolyCoat Floors | Garage Epoxy, Metallic & Commercial Floors — Waco, TX",
+    template: "%s | PolyCoat Floors",
   },
   description:
-    "Arctic Air HVAC is a Waco, TX heating and cooling company offering AC repair, furnace service, new system installation, duct cleaning, and maintenance plans for Central Texas homes and businesses. Licensed, local, no contracts.",
+    "PolyCoat Floors is a Waco, TX epoxy flooring contractor offering garage epoxy, metallic epoxy, flake systems, commercial epoxy, concrete polish, and floor repair & recoat for Central Texas homes and businesses. Certified coatings installers, bonded & insured, 5-Year Coating Warranty.",
   keywords: [
-    "Arctic Air HVAC",
-    "HVAC company Waco TX",
-    "AC repair Waco Texas",
-    "air conditioning installation Waco",
-    "furnace repair Central Texas",
-    "heating and cooling Waco TX",
-    "HVAC contractor Hewitt TX",
-    "duct cleaning Waco",
-    "emergency AC repair Waco",
+    "PolyCoat Floors",
+    "epoxy flooring contractor Waco TX",
+    "garage epoxy floor Waco Texas",
+    "metallic floor epoxy Central Texas",
+    "flake epoxy floor Waco TX",
+    "metallic epoxy Waco",
+    "epoxy repair Hewitt TX",
+    "commercial floor coating Waco",
+    "epoxy flooring company Temple Killeen",
   ],
-  authors: [{ name: "Arctic Air HVAC", url: BASE_URL }],
-  creator: "Arctic Air HVAC",
-  publisher: "Arctic Air HVAC",
+  authors: [{ name: "PolyCoat Floors", url: BASE_URL }],
+  creator: "PolyCoat Floors",
+  publisher: "PolyCoat Floors",
   icons: {
     icon: [`${BASE_URL}/logos/favicon.ico?v=1`],
     apple: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
     shortcut: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
   },
   openGraph: {
-    title: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
+    title: "PolyCoat Floors | Garage Epoxy, Metallic & Commercial Floors — Waco, TX",
     description:
-      "Waco-based HVAC company for AC repair, furnace service, new installations, and maintenance plans across Central Texas. Licensed & insured. No contracts.",
+      "Waco-based epoxy flooring contractor for garage floors, metallic floors, flake systems, decorative floors coated, repairs, and commercial floor coating across Central Texas. certified coatings, bonded & insured. 5-Year Coating Warranty.",
     url: BASE_URL,
-    siteName: "Arctic Air HVAC",
+    siteName: "PolyCoat Floors",
     images: [
       {
-        url: `${BASE_URL}/logos/arctic-air-banner.png?v=1`,
-        width: 1200,
+        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        width: 4000,
         height: 630,
-        alt: "Arctic Air HVAC — Waco TX Air Conditioning & Heating",
+        alt: "PolyCoat Floors — Waco TX Garage Epoxy · Metallic floors · Flake Systems",
       },
     ],
     locale: "en_US",
@@ -128,10 +119,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arctic Air HVAC | Waco TX Heating & Cooling",
+    title: "PolyCoat Floors | Waco TX Epoxy Flooring Contractor",
     description:
-      "AC repair, heating service, new installations & maintenance plans for Central Texas. Licensed & insured — no contracts.",
-    images: [`${BASE_URL}/logos/arctic-air-banner.png?v=1`],
+      "Garage Epoxy, metallic floors, flake systems, metallic epoxy & commercial floor coating for Central Texas. certified coatings · 5-Year Coating Warranty.",
+    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
   },
   robots: {
     index: true,
@@ -151,28 +142,28 @@ export const metadata: Metadata = {
 };
 
 const reviewCount = reviews.length;
-const ratingValue = "5.0";
+const ratingValue = "4.9";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "HomeAndConstructionBusiness",
   "@id": `${BASE_URL}/#organization`,
-  name: "Arctic Air HVAC",
-  alternateName: "Arctic Air Heating & Cooling",
+  name: "PolyCoat Floors",
+  alternateName: "PolyCoat Floors Waco",
   description:
-    "Residential and commercial HVAC services in Waco and Central Texas — AC repair, heating, new installations, duct cleaning, and maintenance plans. Licensed, insured, no contracts.",
+    "Residential and commercial epoxy flooring in Waco and Central Texas — garage epoxy, metallic epoxy, flake systems, commercial epoxy, concrete polish, and floor repair & recoat. Certified coatings installers, bonded & insured, 5-Year Coating Warranty.",
   url: BASE_URL,
-  telephone: "+12549001234",
-  email: "contact@arcticairhvac.com",
-  foundingDate: "2010",
+  telephone: "+12549801919",
+  email: "hello@polycoatfloors.com",
+  foundingDate: "2014",
   founder: {
     "@type": "Person",
-    name: "Mike Hawkins",
-    jobTitle: "Owner & Master HVAC Technician",
+    name: "Nina Park",
+    jobTitle: "Owner & Lead Coatings Specialist",
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "4521 Bosque Blvd",
+    streetAddress: "3300 Lake Air Dr",
     addressLocality: "Waco",
     addressRegion: "TX",
     postalCode: "76710",
@@ -201,24 +192,22 @@ const localBusinessSchema = {
     { "@type": "City", name: "Waco",        containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Hewitt",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Woodway",      containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Robinson",     containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "Bellmead",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "China Spring", containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Hillsboro",    containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "McGregor",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Temple",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Killeen",      containedInPlace: { "@type": "State", name: "Texas" } },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "HVAC Services",
+    name: "Epoxy Flooring Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heating Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Furnace Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Duct Cleaning" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "HVAC Maintenance Plans" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Indoor Air Quality" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Smart Thermostat Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Garage Epoxy" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Metallic Epoxy" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Flake Systems" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Epoxy" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Concrete Polish" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Floor Repair & Recoat" } },
     ],
   },
   aggregateRating: {
@@ -232,7 +221,7 @@ const localBusinessSchema = {
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card, Check, Financing",
   sameAs: [
-    "https://www.facebook.com/arcticairhvac",
+    "https://www.facebook.com/polycoatfloors",
     "https://www.google.com/maps/?cid=placeholder",
   ],
 };
@@ -254,12 +243,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* ConditionalShell shows Header/Footer only on non-admin pages */}
         <ConditionalShell>
           <Header />
         </ConditionalShell>
 
-        <NextTopLoader color="#f97316" showSpinner={false} />
+        <NextTopLoader color="#7e22ce" showSpinner={false} />
 
         <Suspense fallback={null}>
           <Analytics />
@@ -275,10 +263,10 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#0a130a",
+                  background: "#1a1025",
                 }}
               >
-                <PulseLoader size={50} color="#f97316" />
+                <PulseLoader size={50} color="#7e22ce" />
               </div>
             }
           >
@@ -294,7 +282,6 @@ export default function RootLayout({
           <CookieBanner />
         </Suspense>
 
-        {/* Footer only on non-admin pages */}
         <ConditionalShell>
           <Footer />
         </ConditionalShell>

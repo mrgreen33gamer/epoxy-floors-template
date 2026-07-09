@@ -42,6 +42,7 @@ import styles from './styles.module.scss';
 const NAV_LINKS = [
   { href: '/',              label: 'Home' },
   { href: '/services',      label: 'Services' },
+  { href: '/projects',      label: 'Projects' },
   { href: '/service-areas', label: 'Service Areas' },
   { href: '/blogs',         label: 'Blog' },
   { href: '/about',         label: 'About' },
@@ -49,14 +50,14 @@ const NAV_LINKS = [
 ];
 
 const MARQUEE_ITEMS = [
-  'Same-Day Emergency Service Available',
-  '1-Year Parts & Labor Warranty',
-  'Flat-Rate Pricing — No Surprises',
-  '4.9★ Google Rating · 300+ Reviews',
-  'NATE Certified Technicians',
-  'No Contracts — Ever',
-  'Serving Central Texas Since 2010',
-  'Licensed & Insured · Waco, TX',
+  'Free On-Site Quotes',
+  '5-Year Coating Warranty · Slip-Resistant Options',
+  'Flat-Rate Quotes — No Surprises',
+  '4.9â˜… Google Rating · 700+ Reviews',
+  'Certified Coatings Installers · Fully Insured',
+  '2,400+ Floors Coated',
+  'Serving Central Texas Since 2014',
+  'Certified · Bonded & Insured · Waco, TX',
 ];
 
 export default function Header() {
@@ -211,20 +212,17 @@ export default function Header() {
           <div className={styles.navInner}>
 
             {/* Logo */}
-            <Link href="/" className={styles.logo} aria-label="Arctic Air HVAC home">
+            <Link href="/" className={styles.logo} aria-label="PolyCoat Floors home">
               <span className={styles.logoMark} aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <line x1="12" y1="2" x2="12" y2="22"/>
-                  <line x1="2" y1="12" x2="22" y2="12"/>
-                  <polyline points="8 6 12 2 16 6"/>
-                  <polyline points="8 18 12 22 16 18"/>
-                  <polyline points="6 8 2 12 6 16"/>
-                  <polyline points="18 8 22 12 18 16"/>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="1"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="9" y1="21" x2="9" y2="9"/>
                 </svg>
               </span>
               <span className={styles.logoText}>
-                <span className={styles.logoName}>Arctic Air HVAC</span>
-                <span className={styles.logoTagline}>Heating · Cooling · Comfort</span>
+                <span className={styles.logoName}>PolyCoat Floors</span>
+                <span className={styles.logoTagline}>Garage Epoxy · Metallic floors · Flake Systems</span>
               </span>
             </Link>
 
@@ -247,14 +245,14 @@ export default function Header() {
 
             {/* Desktop CTAs */}
             <div className={styles.ctaGroup}>
-              <a href="tel:+12549001234" className={styles.callBtn}>
+              <a href="tel:+12549801919" className={styles.callBtn}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
                 Call Now
               </a>
               <Link href="/contact" className={styles.estimateBtn}>
-                Free Estimate
+                Free Quote
               </Link>
             </div>
 
@@ -294,16 +292,13 @@ export default function Header() {
         <div className={styles.drawerHead}>
           <span className={styles.drawerBrand}>
             <span className={styles.drawerIcon} aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <line x1="12" y1="2" x2="12" y2="22"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <polyline points="8 6 12 2 16 6"/>
-                <polyline points="8 18 12 22 16 18"/>
-                <polyline points="6 8 2 12 6 16"/>
-                <polyline points="18 8 22 12 18 16"/>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="1"/>
+                <line x1="3" y1="9" x2="21" y2="9"/>
+                <line x1="9" y1="21" x2="9" y2="9"/>
               </svg>
             </span>
-            Arctic Air HVAC
+            PolyCoat Floors
           </span>
           <button
             className={styles.drawerClose}
@@ -343,21 +338,21 @@ export default function Header() {
         </ul>
 
         <div className={styles.drawerActions}>
-          <a href="tel:+12549001234" className={styles.drawerCallBtn} onClick={() => setMenuOpen(false)}>
+          <a href="tel:+12549801919" className={styles.drawerCallBtn} onClick={() => setMenuOpen(false)}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
-            Call (254) 900-1234
+            Call (254) 980-1919
           </a>
           <Link href="/contact" className={styles.drawerEstimateBtn} onClick={() => setMenuOpen(false)}>
-            Free Estimate
+            Free Quote
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
           </Link>
         </div>
 
         <div className={styles.drawerFoot}>
           <span className={styles.drawerDot} aria-hidden="true" />
-          Licensed &amp; Insured · Waco, TX
+          Certified Coatings Installers · Bonded & Insured · Waco, TX
         </div>
       </nav>
     </>

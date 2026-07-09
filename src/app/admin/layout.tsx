@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import AdminSessionProvider from './AdminSessionProvider';
 
 export const metadata: Metadata = {
-  title:  'Admin — Scott Applications',
+  title:  'Admin — PolyCoat Floors',
   robots: { index: false, follow: false },
 };
 
