@@ -339,3 +339,27 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — epoxy-floors-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: repeating-linear-gradient(-58deg, transparent, transparent 22px, rgba($white, 0.012) 22px, rgba($white, 0.012) 23px) !important;
+    background-size: auto !important;
+    opacity: 0.59 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 62% 1%, rgba($orange, 0.077), transparent 70%), radial-gradient(ellipse 40% 50% at 82% 71%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */

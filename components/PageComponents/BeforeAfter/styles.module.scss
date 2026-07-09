@@ -173,3 +173,46 @@
   .sliderWrap { aspect-ratio: 4 / 3; }
   .handlePill { width: 34px; height: 34px; font-size: 0.8rem; }
 }
+
+/* === BEFORE/AFTER SLIDER UNIQUENESS — epoxy-floors-template === */
+.card {
+  border-radius: 16px !important;
+}
+
+.sliderWrap {
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 0 0 16px 16px !important;
+}
+
+.handle,
+.divider,
+.sliderHandle {
+  width: 3px !important;
+  background: $white !important;
+  box-shadow: 0 0 12px rgba(0,0,0,0.35) !important;
+}
+
+.handleKnob,
+.knob,
+.sliderKnob {
+  border-color: $white !important;
+  background: $obsidian !important;
+  border-radius: 4px !important;
+}
+
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+}
+
+.resultBadge {
+  border-radius: 4px !important;
+}
+
+.beforeLabel, .afterLabel, .label {
+  border-radius: 0 !important;
+  background: $orange !important;
+  color: $obsidian !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+}
+/* end before/after uniqueness */

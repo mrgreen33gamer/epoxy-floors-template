@@ -259,3 +259,46 @@
     justify-content: center;
   }
 }
+
+/* === COOKIE UNIQUENESS — epoxy-floors-template === */
+.backdrop {
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  left: auto !important;
+  top: auto !important;
+  max-width: 360px !important;
+  transform: none;
+}
+
+.card {
+  background: $obsidian !important;
+  border: 1px solid rgba($orange, 0.35) !important;
+  border-radius: 4px !important;
+  padding: 1.5rem !important;
+  border-bottom: 3px solid $orange !important;
+  
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba($orange, 0.2),
+    inset 0 1px 0 rgba($white, 0.06) !important;
+}
+
+.iconWrap {
+  border-radius: 4px !important;
+  background: rgba($orange, 0.14) !important;
+  border-color: rgba($orange, 0.28) !important;
+  color: $orange !important;
+}
+
+.btnAccept {
+  background: $orange !important;
+  color: $obsidian !important;
+  border-radius: 4px !important;
+  &:hover { filter: brightness(1.08); }
+}
+
+.btnDecline,
+.btnEssential {
+  border-radius: 4px !important;
+}
+/* end cookie uniqueness */
