@@ -23,14 +23,14 @@ const DEFAULT_GROUPS: BrandGroup[] = [
   {
     label: 'What We Coat',
     items: [
-      { name: 'Garage Epoxy', type: 'brand', icon: 'ðŸš—' },
-      { name: 'Metallic', type: 'brand', icon: 'âœ¨' },
-      { name: 'Flake Systems', type: 'brand', icon: 'ðŸŽ¨' },
-      { name: 'Commercial', type: 'brand', icon: 'ðŸ­' },
-      { name: 'Polish', type: 'brand', icon: 'ðŸ’Ž' },
-      { name: 'Recoats', type: 'brand', icon: 'ðŸ”§' },
-      { name: 'Polyaspartic', type: 'brand', icon: 'âš¡' },
-      { name: 'Topcoats', type: 'brand', icon: 'ðŸ›¡ï¸' },
+      { name: 'Garage Epoxy', type: 'brand', icon: '🚗' },
+      { name: 'Metallic', type: 'brand', icon: '✨' },
+      { name: 'Flake Systems', type: 'brand', icon: '🎨' },
+      { name: 'Commercial', type: 'brand', icon: '🏭' },
+      { name: 'Polish', type: 'brand', icon: '💎' },
+      { name: 'Recoats', type: 'brand', icon: '🔧' },
+      { name: 'Polyaspartic', type: 'brand', icon: '⚡' },
+      { name: 'Topcoats', type: 'brand', icon: '🛡️' },
     ],
   },
   {

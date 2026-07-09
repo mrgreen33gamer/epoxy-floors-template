@@ -62,10 +62,10 @@ export default function ConcretePolishPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Honest polish vs coat advice", us: "âœ… Always", others: "âŒ One-size-fits-all" },
-    { feature: "Written polish quote", us: "âœ… Yes", others: "âŒ Vague" },
-    { feature: "Sheen target agreed upfront", us: "âœ… Included", others: "âŒ Surprise gloss" },
-    { feature: "Dust-controlled process", us: "âœ… Best effort", others: "âŒ Messy" },
+    { feature: "Honest polish vs coat advice", us: "✅ Always", others: "❌ One-size-fits-all" },
+    { feature: "Written polish quote", us: "✅ Yes", others: "❌ Vague" },
+    { feature: "Sheen target agreed upfront", us: "✅ Included", others: "❌ Surprise gloss" },
+    { feature: "Dust-controlled process", us: "✅ Best effort", others: "❌ Messy" },
   ];
 
   const faq = [

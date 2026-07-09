@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Coatings',
     date:     'April 18, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'Epoxy versus polyaspartic garage floor comparison',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Prep',
     date:     'April 14, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageSrc: '/pages/home/welcome/after.jpg',
     imageAlt: 'Professional garage floor prep for epoxy',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Design',
     date:     'April 10, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/heat-pump.jpg',
+    imageSrc: '/pages/home/services/service-1.jpg',
     imageAlt: 'Metallic epoxy floor design ideas',
   },
 ];

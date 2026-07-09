@@ -31,3 +31,13 @@
     margin-bottom: 2rem;
   }
 }
+
+/* === UNIQUENESS IDENTITY LAYER — epoxy-floors-template === */
+.pageWrapper {
+  /* brand page rhythm */
+}
+.section {
+  padding-top: clamp(3.7rem, 6vw, 5.7rem) !important;
+  padding-bottom: clamp(3.7rem, 6vw, 5.7rem) !important;
+}
+/* end identity layer */

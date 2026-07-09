@@ -62,10 +62,10 @@ export default function FloorRepairRecoatPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Honest repair vs strip advice", us: "âœ… Always", others: "âŒ Upsell full system" },
-    { feature: "Written repair quote", us: "âœ… Yes", others: "âŒ Vague" },
-    { feature: "Cause assessment (moisture/prep)", us: "âœ… Included", others: "âŒ Band-aid only" },
-    { feature: "Match adjacent finish", us: "âœ… Best effort", others: "âŒ Obvious patch" },
+    { feature: "Honest repair vs strip advice", us: "✅ Always", others: "❌ Upsell full system" },
+    { feature: "Written repair quote", us: "✅ Yes", others: "❌ Vague" },
+    { feature: "Cause assessment (moisture/prep)", us: "✅ Included", others: "❌ Band-aid only" },
+    { feature: "Match adjacent finish", us: "✅ Best effort", others: "❌ Obvious patch" },
   ];
 
   const faq = [

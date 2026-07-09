@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Garage Epoxy",
       body: "Durable garage floor coatings with diamond grind prep, moisture checks, and slip-resistant topcoats built for Central Texas heat and vehicles.",
       link: "/services/garage-epoxy",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faGem,
       title: "Metallic Epoxy",
       body: "One-of-a-kind metallic floors with depth and high-gloss finish for living spaces, showrooms, and custom garages.",
       link: "/services/metallic-epoxy",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faPaintRoller,
       title: "Flake Systems",
       body: "Full-broadcast flake systems that hide stains, add traction, and stand up to daily garage and shop use.",
       link: "/services/flake-systems",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faIndustry,
       title: "Commercial Epoxy",
       body: "High-traffic commercial and industrial coatings for warehouses, auto shops, and facilities.",
       link: "/services/commercial-epoxy",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faGem,
       title: "Concrete Polish",
       body: "Polished concrete for modern homes and commercial spaces — refined sheen and easy maintenance.",
       link: "/services/concrete-polish",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faWrench,
       title: "Floor Repair & Recoat",
       body: "Peeling epoxy repair, failed coating removal, and professional recoats with honest diagnosis.",
       link: "/services/floor-repair-recoat",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -163,7 +169,7 @@ export default function HomePage() {
   return (
     <main className={styles.pageWrapper}>
       <WelcomePage />
-      <TrustBar headline="4.9â˜… · 700+ reviews · 2,400+ floors coated across Central Texas" />
+      <TrustBar headline="4.9★ · 700+ reviews · 2,400+ floors coated across Central Texas" />
       <div className={styles.section}>
         <ServiceCardComponent
           heading="Epoxy Floor Services Built for Central Texas"
@@ -171,14 +177,21 @@ export default function HomePage() {
           cards={services}
         />
       </div>
+      <CTABanner
+        headline="Floors That Look Built-In Expensive."
+        subline="Garage flake, metallic, and commercial epoxy systems with prep that actually sticks in Texas heat."
+        primaryText="Call (254) 980-1919"
+        primaryLink="tel:+12549801919"
+        secondaryText="See Floor Options"
+        secondaryLink="/contact"
+      
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+       />
       <div className={styles.section}>
         <ImpactMetrics metrics={metrics} cityName="Waco" title="12 Years, By the Numbers" />
       </div>
       <div className={styles.section}>
         <WhyChooseUs cityName="Waco" features={whyFeatures} title="Why Central Texas Chooses PolyCoat" />
-      </div>
-      <div className={styles.section}>
-        <WhatToExpect sectionTitle="What to Expect Working With Us" expectations={expectations} />
       </div>
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
@@ -193,16 +206,11 @@ export default function HomePage() {
         <LocalServiceAreas cityName="Waco" areas={localAreas} servicePath="services" title="Serving Waco & Central Texas" />
       </div>
       <div className={styles.section}>
+        <WhatToExpect sectionTitle="What to Expect Working With Us" expectations={expectations} />
+      </div>
+      <div className={styles.section}>
         <FAQ cityName="Waco" faq={faq} title="Epoxy Flooring FAQs" />
       </div>
-      <CTABanner
-        headline="Ready for Floors Done Right?"
-        subline="Free on-site quote. Flat-rate pricing. Certified coatings installers. 5-Year Coating Warranty · Slip-Resistant Options."
-        primaryText="Call (254) 980-1919"
-        primaryLink="tel:+12549801919"
-        secondaryText="Get a Free Quote"
-        secondaryLink="/contact"
-      />
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>

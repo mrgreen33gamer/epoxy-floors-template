@@ -1,37 +1,30 @@
-// src/app/globalVariables.scss
-// PolyCoat Floors — Brand Tokens
-//
-// THREE DISTINCT FONTS:
-//   $titleFont  → Barlow Condensed  — bold condensed display (hero h1, section titles)
-//   $headerFont → Outfit            — clean geometric sans   (nav, card titles, labels, CTAs)
-//   $textFont   → Inter             — refined humanist sans  (body copy, form text, paragraphs)
+// Auto uniqueness tokens — gloss industrial floor
+$titleFont:  var(--font-title),  'Orbitron', sans-serif;
+$headerFont: var(--font-header), 'Exo 2', sans-serif;
+$textFont:   var(--font-body),   'Rajdhani', sans-serif;
 
-$titleFont:  var(--font-barlow-condensed), 'Barlow Condensed', sans-serif;
-$headerFont: var(--font-outfit),           'Outfit',           sans-serif;
-$textFont:   var(--font-inter),            'Inter',            sans-serif;
-
-// Core Palette
 $black:      #000000;
-$obsidian:   #1a1025;
-$blackflat:  #2a1a3a;
+$obsidian:   #020617;
+$blackflat:  #020617;
 $white:      #FFFFFF;
-$offwhite:   #faf5ff;
+$offwhite:   #ecfeff;
 
-// Greys (purple-tinted)
-$darkgrey:   #b8a0d0;
-$grey:       #6b5080;
-$lightgrey:  #e8dcf5;
+$darkgrey:   #94a3b8;
+$grey:       #64748b;
+$lightgrey:  #e2e8f0;
 
-// Brand Accent — purple
-$orange:     #7e22ce;
-$lightorange:#a855f7;
-$darkorange: #6b21a8;
+$orange:     #22d3ee;
+$lightorange:#67e8f9;
+$darkorange: #0891b2;
 
-// Legacy aliases
 $green:      $orange;
 $lightgreen: $lightorange;
 $darkgreen:  $darkorange;
-$blue:       #1e6fa8;
+$blue:       #22d3ee;
 
-// Error
+$radius-sm:  2px;
+$radius-md:  4px;
+$radius-lg:  8px;
+$radius-pill: 2px;
+
 $danger-red: #ef4444;

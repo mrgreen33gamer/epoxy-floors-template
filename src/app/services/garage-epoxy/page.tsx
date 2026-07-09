@@ -62,11 +62,11 @@ export default function GarageEpoxyPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Diamond grind surface prep", us: "âœ… Always", others: "âŒ Often skipped" },
-    { feature: "Flat-rate quote (prep + coat + topcoat)", us: "âœ… Written", others: "âŒ Hourly + extras" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Every floor", others: "âŒ Rare" },
-    { feature: "Certified coatings installers", us: "âœ… All crews", others: "âŒ Varies" },
-    { feature: "Moisture testing before coat", us: "âœ… Standard", others: "âŒ Guesswork" },
+    { feature: "Diamond grind surface prep", us: "✅ Always", others: "❌ Often skipped" },
+    { feature: "Flat-rate quote (prep + coat + topcoat)", us: "✅ Written", others: "❌ Hourly + extras" },
+    { feature: "5-Year Coating Warranty", us: "✅ Every floor", others: "❌ Rare" },
+    { feature: "Certified coatings installers", us: "✅ All crews", others: "❌ Varies" },
+    { feature: "Moisture testing before coat", us: "✅ Standard", others: "❌ Guesswork" },
   ];
 
   const faq = [

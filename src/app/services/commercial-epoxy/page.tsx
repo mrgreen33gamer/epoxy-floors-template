@@ -62,10 +62,10 @@ export default function CommercialEpoxyPage() {
   ];
 
   const comparisonRows = [
-    { feature: "COI & commercial paperwork ready", us: "âœ… Fast", others: "âŒ Delays start" },
-    { feature: "Schedule-driven install windows", us: "âœ… Reliable", others: "âŒ Flexible-only" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Available", others: "âŒ Limited" },
-    { feature: "PM-friendly communication", us: "âœ… Standard", others: "âŒ Hard to reach" },
+    { feature: "COI & commercial paperwork ready", us: "✅ Fast", others: "❌ Delays start" },
+    { feature: "Schedule-driven install windows", us: "✅ Reliable", others: "❌ Flexible-only" },
+    { feature: "5-Year Coating Warranty", us: "✅ Available", others: "❌ Limited" },
+    { feature: "PM-friendly communication", us: "✅ Standard", others: "❌ Hard to reach" },
   ];
 
   const faq = [

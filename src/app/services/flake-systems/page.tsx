@@ -62,10 +62,10 @@ export default function FlakeSystemsPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Full broadcast (not light sprinkle)", us: "âœ… Standard", others: "âŒ Sparse flakes" },
-    { feature: "Flat-rate flake system quote", us: "âœ… Written", others: "âŒ Vague estimate" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Included", others: "âŒ Short or none" },
-    { feature: "Slip-resistant topcoat options", us: "âœ… Yes", others: "âŒ Gloss only" },
+    { feature: "Full broadcast (not light sprinkle)", us: "✅ Standard", others: "❌ Sparse flakes" },
+    { feature: "Flat-rate flake system quote", us: "✅ Written", others: "❌ Vague estimate" },
+    { feature: "5-Year Coating Warranty", us: "✅ Included", others: "❌ Short or none" },
+    { feature: "Slip-resistant topcoat options", us: "✅ Yes", others: "❌ Gloss only" },
   ];
 
   const faq = [

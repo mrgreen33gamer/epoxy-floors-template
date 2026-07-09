@@ -17,7 +17,7 @@
 //   The actual safe-area padding rules live in globals.css, applied to
 //   <header>, <footer>, and <body>. See that file for the full breakdown.
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, ABeeZee } from "next/font/google";
+import { Orbitron, Exo_2, Rajdhani } from "next/font/google";
 import "./globals.css";
 import "./globalVariables.scss";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -41,20 +41,28 @@ import reviews from "../../libs/local-db/reviews";
 
 config.autoAddCss = false;
 
-// ── FONTS ─────────────────────────────────────────────────────────────────────
-const barlowCondensed = Barlow_Condensed({
-  weight: ["400", "500", "600", "700", "800"],
+// ── FONTS — uniqueness
+const fontTitle = Orbitron({
+  weight: ["400","500","600","700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-barlow-condensed",
+  variable: "--font-title",
 });
 
-const aBeeZee = ABeeZee({
-  weight: ["400"],
+const fontHeader = Exo_2({
+  weight: ["400","500","600","700"],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-abeezee",
+  variable: "--font-header",
 });
+
+const fontBody = Rajdhani({
+  weight: ["400","500","600","700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-body",
+});
+
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
@@ -67,8 +75,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit:  "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1a1025" },
-    { media: "(prefers-color-scheme: dark)",  color: "#1a1025" },
+    { media: "(prefers-color-scheme: light)", color: "#020617" },
+    { media: "(prefers-color-scheme: dark)",  color: "#020617" },
   ],
   colorScheme: "dark",
 };
@@ -234,7 +242,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${aBeeZee.variable}`}
+      className={`${fontTitle.variable} ${fontHeader.variable} ${fontBody.variable}`}
     >
       <head>
         <script
@@ -247,7 +255,7 @@ export default function RootLayout({
           <Header />
         </ConditionalShell>
 
-        <NextTopLoader color="#7e22ce" showSpinner={false} />
+        <NextTopLoader color="#22d3ee" showSpinner={false} />
 
         <Suspense fallback={null}>
           <Analytics />
@@ -263,10 +271,10 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#1a1025",
+                  background: "#020617",
                 }}
               >
-                <PulseLoader size={50} color="#7e22ce" />
+                <PulseLoader size={50} color="#22d3ee" />
               </div>
             }
           >

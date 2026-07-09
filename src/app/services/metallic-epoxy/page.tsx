@@ -48,7 +48,7 @@ export default function MetallicEpoxyPage() {
 
   const metrics = [
     { icon: faTrophy,    value: 350, label: "Metallic floors completed", suffix: "+", duration: 3 },
-    { icon: faChartLine, value: 4.9, label: "Average customer rating", suffix: "â˜…", duration: 2 },
+    { icon: faChartLine, value: 4.9, label: "Average customer rating", suffix: "★", duration: 2 },
     { icon: faClock,     value: 12, label: "Years of decorative coatings", suffix: "+", duration: 2 },
   ];
 
@@ -62,10 +62,10 @@ export default function MetallicEpoxyPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Color samples before install", us: "âœ… Always", others: "âŒ Surprise finish" },
-    { feature: "Metallic process explained", us: "âœ… Clear options", others: "âŒ Vague" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Included", others: "âŒ Decorative excluded" },
-    { feature: "Clear topcoat protection", us: "âœ… Yes", others: "âŒ Soft finish only" },
+    { feature: "Color samples before install", us: "✅ Always", others: "❌ Surprise finish" },
+    { feature: "Metallic process explained", us: "✅ Clear options", others: "❌ Vague" },
+    { feature: "5-Year Coating Warranty", us: "✅ Included", others: "❌ Decorative excluded" },
+    { feature: "Clear topcoat protection", us: "✅ Yes", others: "❌ Soft finish only" },
   ];
 
   const faq = [

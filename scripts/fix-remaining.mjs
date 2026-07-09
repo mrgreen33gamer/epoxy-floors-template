@@ -10,7 +10,7 @@ const w = (rel, c) => { fs.writeFileSync(path.join(ROOT, rel), c); console.log('
 const r = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const patch = (rel, fn) => { const p = path.join(ROOT, rel); let t = fs.readFileSync(p, 'utf8'); t = fn(t); fs.writeFileSync(p, t); console.log('patched', rel); };
 
-// â”€â”€ Forms â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Forms ────────────────────────────────────────────────────────────────────
 const servicesV1 = `const SERVICES = [
   { icon: faWarehouse,       label: 'Garage Epoxy' },
   { icon: faGem,             label: 'Metallic Epoxy' },
@@ -39,7 +39,7 @@ for (const f of [
 ]) {
   patch(f, (t) => {
     t = t.replace(/const SERVICES = \[[\s\S]*?\];/, f.includes('Variant4') ? servicesV4 : servicesV1);
-    // Expand icon imports carefully â€” only replace the solid icons import block
+    // Expand icon imports carefully — only replace the solid icons import block
     t = t.replace(
       /import \{\s*faCircleCheck[\s\S]*?\} from '@fortawesome\/free-solid-svg-icons';/,
       `import {
@@ -54,8 +54,8 @@ for (const f of [
       .replace(/hello@ironpathconcrete\.com/g, 'hello@polycoatfloors.com')
       .replace(/tel:\+12547504400/g, 'tel:+12549801919')
       .replace(/\(254\) 750-4400/g, '(254) 980-1919')
-      .replace(/4\.9â˜… Â· 900\+ reviews/g, '4.9â˜… Â· 700+ reviews')
-      .replace(/ACI Â· Insured/g, 'Certified Â· Insured')
+      .replace(/4\.9★ · 900\+ reviews/g, '4.9★ · 700+ reviews')
+      .replace(/ACI · Insured/g, 'Certified · Insured')
       .replace(/Free estimates/g, 'Free quotes')
       .replace(/#b45309/g, '#7e22ce')
       .replace(/An PolyCoat estimator/g, 'A PolyCoat estimator')
@@ -65,7 +65,7 @@ for (const f of [
   });
 }
 
-// â”€â”€ blog-posts.ts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── blog-posts.ts ────────────────────────────────────────────────────────────
 w('libs/blog-posts.ts', `// libs/blog-posts.ts
 export interface BlogPost {
   slug:      string;
@@ -83,7 +83,7 @@ const ALL_POSTS: BlogPost[] = [
   {
     slug:     'epoxy-vs-polyaspartic-floors',
     title:    'Epoxy vs. Polyaspartic Floors: Which Is Right for Your Garage?',
-    excerpt:  'Cure time, UV stability, cost, and durability â€” how to choose between epoxy and polyaspartic garage systems in Central Texas.',
+    excerpt:  'Cure time, UV stability, cost, and durability — how to choose between epoxy and polyaspartic garage systems in Central Texas.',
     category: 'Coatings',
     date:     'April 18, 2026',
     readTime: 8,
@@ -94,7 +94,7 @@ const ALL_POSTS: BlogPost[] = [
   {
     slug:     'how-to-prep-garage-for-epoxy',
     title:    'How to Prep Your Garage for Epoxy (What Pros Actually Do)',
-    excerpt:  'Moisture testing, diamond grinding, crack repair, and oil removal â€” the prep steps that decide coating longevity.',
+    excerpt:  'Moisture testing, diamond grinding, crack repair, and oil removal — the prep steps that decide coating longevity.',
     category: 'Prep',
     date:     'April 14, 2026',
     readTime: 7,
@@ -124,7 +124,7 @@ export function getAllSlugs(): string[] { return ALL_POSTS.map((p) => p.slug); }
 export default ALL_POSTS;
 `);
 
-// â”€â”€ projects.ts exports fix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── projects.ts exports fix ──────────────────────────────────────────────────
 w('libs/local-db/projects.ts', `// libs/local-db/projects.ts
 // Central data store for PolyCoat Floors projects shown on
 // /projects and /projects/[slug]. Images reuse existing gallery assets.
@@ -379,7 +379,7 @@ export function getProjectsByCategory(category: ProjectCategory): Project[] {
 export default ALL_PROJECTS;
 `);
 
-// â”€â”€ Blog pages (match BlogBody API) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Blog pages (match BlogBody API) ──────────────────────────────────────────
 w('src/app/blogs/epoxy-vs-polyaspartic-floors/page.tsx', `'use client';
 import BlogHero from '#/BlogComponents/BlogHero/BlogHero';
 import BlogBody, { BlogSection } from '#/BlogComponents/BlogBody/BlogBody';
@@ -390,7 +390,7 @@ import { faClock, faSun, faDollarSign, faCheck, faShieldHalved, faCar } from '@f
 const sections: BlogSection[] = [
   {
     type: 'prose',
-    body: 'Epoxy systems are proven, cost-effective, and excellent for many residential garages when properly prepped. Polyaspartic (and hybrid systems) often cure faster, resist UV yellowing better, and can return vehicles to the floor sooner â€” at a higher material cost. The right choice depends on budget, timeline, sun exposure, and how hard the floor will be used.',
+    body: 'Epoxy systems are proven, cost-effective, and excellent for many residential garages when properly prepped. Polyaspartic (and hybrid systems) often cure faster, resist UV yellowing better, and can return vehicles to the floor sooner — at a higher material cost. The right choice depends on budget, timeline, sun exposure, and how hard the floor will be used.',
   },
   {
     type: 'cards',
@@ -400,8 +400,8 @@ const sections: BlogSection[] = [
       { icon: faSun, title: 'UV exposure', body: 'Open-door sunlight can yellow some coatings. UV-stable topcoats and polyaspartics help in bright Texas garages.' },
       { icon: faCar, title: 'Hot-tire resistance', body: 'Prep and topcoat quality matter more than brand slogans for hot-tire pickup resistance.' },
       { icon: faDollarSign, title: 'Budget', body: 'Polyaspartic systems usually cost more per square foot than standard epoxy packages.' },
-      { icon: faCheck, title: 'Installer skill', body: 'A great system applied poorly fails either way â€” grind prep is non-negotiable.' },
-      { icon: faShieldHalved, title: 'Warranty', body: 'Ask what the warranty covers: adhesion, peel, and workmanship â€” not marketing promises alone.' },
+      { icon: faCheck, title: 'Installer skill', body: 'A great system applied poorly fails either way — grind prep is non-negotiable.' },
+      { icon: faShieldHalved, title: 'Warranty', body: 'Ask what the warranty covers: adhesion, peel, and workmanship — not marketing promises alone.' },
     ],
   },
   {
@@ -426,7 +426,7 @@ const sections: BlogSection[] = [
     items: [
       'We assess moisture, concrete condition, and your schedule first',
       'You get a flat-rate quote for grind prep through topcoat',
-      'We explain epoxy vs polyaspartic in plain English â€” no pressure',
+      'We explain epoxy vs polyaspartic in plain English — no pressure',
     ],
   },
 ];
@@ -436,7 +436,7 @@ export default function Page() {
     <>
       <BlogHero
         title="Epoxy vs. Polyaspartic Floors: Which Is Right for Your Garage?"
-        description="Cure time, UV stability, cost, and durability â€” how to choose between epoxy and polyaspartic garage systems in Central Texas."
+        description="Cure time, UV stability, cost, and durability — how to choose between epoxy and polyaspartic garage systems in Central Texas."
         imageSrc="/pages/blogs/ac-replacement.jpg"
         imageAlt="Epoxy versus polyaspartic garage floor comparison"
         category="Coatings"
@@ -466,14 +466,14 @@ import { faSearch, faIndustry, faOilCan, faBroom, faCheck, faShieldHalved } from
 const sections: BlogSection[] = [
   {
     type: 'prose',
-    body: 'Most failed garage epoxy is not a â€œbad productâ€ â€” it is poor surface preparation. Coatings need a clean, profiled, dry surface. Painting over dirty, oily, or sealed concrete is a common DIY failure mode. Professional installs start with assessment and mechanical prep, not a quick etch and roll.',
+    body: 'Most failed garage epoxy is not a “bad product” — it is poor surface preparation. Coatings need a clean, profiled, dry surface. Painting over dirty, oily, or sealed concrete is a common DIY failure mode. Professional installs start with assessment and mechanical prep, not a quick etch and roll.',
   },
   {
     type: 'cards',
     heading: 'What Professional Prep Usually Includes',
     cards: [
       { icon: faSearch, title: 'Moisture evaluation', body: 'Check moisture before coating so vapor does not push the system off the slab later.' },
-      { icon: faIndustry, title: 'Diamond grinding', body: 'Mechanical profile so epoxy can bond â€” acid etch alone is not a substitute for pro grind prep.' },
+      { icon: faIndustry, title: 'Diamond grinding', body: 'Mechanical profile so epoxy can bond — acid etch alone is not a substitute for pro grind prep.' },
       { icon: faCheck, title: 'Crack repair', body: 'Patch cracks and damaged areas so the coating has a sound base.' },
       { icon: faOilCan, title: 'Oil treatment', body: 'Oil and contaminants must be addressed or the film will peel at tire paths.' },
       { icon: faBroom, title: 'Clean staging', body: 'Thorough vacuuming and clean staging before mix and pour keeps debris out of the finish.' },
@@ -502,7 +502,7 @@ export default function Page() {
     <>
       <BlogHero
         title="How to Prep Your Garage for Epoxy (What Pros Actually Do)"
-        description="Moisture testing, diamond grinding, crack repair, and oil removal â€” the prep steps that decide coating longevity."
+        description="Moisture testing, diamond grinding, crack repair, and oil removal — the prep steps that decide coating longevity."
         imageSrc="/pages/blogs/energy-savings.jpg"
         imageAlt="Professional garage floor prep for epoxy"
         category="Prep"
@@ -512,7 +512,7 @@ export default function Page() {
       <BlogBody sections={sections} />
       <BlogCTA
         title="Want Prep Done Right the First Time?"
-        body="PolyCoat diamond-grinds, repairs, and coats with a written flat-rate quote â€” no shortcuts that cause peel later."
+        body="PolyCoat diamond-grinds, repairs, and coats with a written flat-rate quote — no shortcuts that cause peel later."
         buttonText="Get Free Quote"
         buttonHref="/contact"
       />
@@ -532,14 +532,14 @@ import { faPalette, faLightbulb, faHome, faStore, faCar, faShieldHalved } from '
 const sections: BlogSection[] = [
   {
     type: 'prose',
-    body: 'Metallic epoxy creates depth and movement that solid colors cannot match. Pigments catch light differently across the floor, so each install is unique. It is popular for showrooms, offices, modern homes, and custom garages where the floor is part of the design â€” not just protection.',
+    body: 'Metallic epoxy creates depth and movement that solid colors cannot match. Pigments catch light differently across the floor, so each install is unique. It is popular for showrooms, offices, modern homes, and custom garages where the floor is part of the design — not just protection.',
   },
   {
     type: 'cards',
     heading: 'Design Choices That Matter',
     cards: [
       { icon: faPalette, title: 'Color pairings', body: 'Primary and accent metallics should complement walls, cabinetry, and brand colors.' },
-      { icon: faLightbulb, title: 'Lighting', body: 'Natural and artificial light change how movement reads â€” view samples in similar light.' },
+      { icon: faLightbulb, title: 'Lighting', body: 'Natural and artificial light change how movement reads — view samples in similar light.' },
       { icon: faHome, title: 'Sheen level', body: 'High gloss shows depth but needs good cleaning habits; satin can hide wear better.' },
       { icon: faStore, title: 'Showrooms & retail', body: 'Metallic floors make strong first impressions under display lighting.' },
       { icon: faCar, title: 'Garage use', body: 'Metallics can work in garages; discuss tire marking and maintenance first.' },
@@ -549,7 +549,7 @@ const sections: BlogSection[] = [
   {
     type: 'callout',
     calloutAccent: true,
-    calloutText: 'Pro Tip: Every metallic floor is unique. Use samples and past project photos to set expectations â€” do not expect a photo-perfect clone of someone elseâ€™s pour.',
+    calloutText: 'Pro Tip: Every metallic floor is unique. Use samples and past project photos to set expectations — do not expect a photo-perfect clone of someone else’s pour.',
   },
   {
     type: 'tips',
@@ -588,8 +588,8 @@ export default function Page() {
 }
 `);
 
-// â”€â”€ Services index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-w('src/app/services/page.tsx', `// PolyCoat Floors â€” Services Overview
+// ── Services index ───────────────────────────────────────────────────────────
+w('src/app/services/page.tsx', `// PolyCoat Floors — Services Overview
 "use client";
 
 import styles from "./page.module.scss";
@@ -625,14 +625,14 @@ export default function ServicesPage() {
     { icon: faGem, title: "Metallic Epoxy", body: "One-of-a-kind metallic floors with depth and high-gloss finish for living spaces, showrooms, and custom garages.", link: "/services/metallic-epoxy" },
     { icon: faPaintRoller, title: "Flake Systems", body: "Full-broadcast flake systems that hide stains, add traction, and stand up to daily garage and shop use.", link: "/services/flake-systems" },
     { icon: faIndustry, title: "Commercial Epoxy", body: "High-traffic commercial and industrial coatings for warehouses, auto shops, and facilities.", link: "/services/commercial-epoxy" },
-    { icon: faShieldHalved, title: "Concrete Polish", body: "Polished concrete for modern homes and commercial spaces â€” refined sheen and easy maintenance.", link: "/services/concrete-polish" },
+    { icon: faShieldHalved, title: "Concrete Polish", body: "Polished concrete for modern homes and commercial spaces — refined sheen and easy maintenance.", link: "/services/concrete-polish" },
     { icon: faWrench, title: "Floor Repair & Recoat", body: "Peeling epoxy repair, failed coating removal, and professional recoats with honest diagnosis.", link: "/services/floor-repair-recoat" },
   ];
 
   const expectations = [
     { icon: faSearch, title: "Free On-Site Quote", description: "We measure on-site, check moisture and condition, and explain exactly what's included with a written price before work starts." },
     { icon: faCheckCircle, title: "Upfront Flat-Rate Pricing", description: "No hourly billing, no surprise fees. You approve the price before we grind or coat." },
-    { icon: faShieldHalved, title: "Certified Â· Bonded & Insured", description: "Certified coatings installers. Bonded and insured on every job." },
+    { icon: faShieldHalved, title: "Certified · Bonded & Insured", description: "Certified coatings installers. Bonded and insured on every job." },
     { icon: faTag, title: "5-Year Coating Warranty", description: "Every floor is backed by five full years of coverage on our coating workmanship. Slip-resistant options available." },
   ];
 
@@ -643,20 +643,20 @@ export default function ServicesPage() {
   ];
 
   const whyFeatures = [
-    { icon: faHeadset, title: "A Real Person Answers", description: "Call or text and reach a real PolyCoat team member â€” not a call center. We schedule your free quote fast." },
-    { icon: faShieldHalved, title: "Honest System Advice", description: "We'll tell you when a recoat is enough and when a full strip-and-recoat makes sense â€” no upselling for the sake of it." },
+    { icon: faHeadset, title: "A Real Person Answers", description: "Call or text and reach a real PolyCoat team member — not a call center. We schedule your free quote fast." },
+    { icon: faShieldHalved, title: "Honest System Advice", description: "We'll tell you when a recoat is enough and when a full strip-and-recoat makes sense — no upselling for the sake of it." },
     { icon: faLock, title: "Bonded & Insured", description: "Fully insured crews. Proof of insurance available on request for builders and facility managers." },
   ];
 
   const processSteps = [
     { number: 1, title: "Call or Book", description: "Phone, text, or the form below. We'll confirm a free on-site quote that fits your schedule.", icon: faHeadset },
     { number: 2, title: "Assess & Measure", description: "We measure, check moisture, and recommend the right system in plain English.", icon: faSearch },
-    { number: 3, title: "Flat-Rate Quote", description: "Written price before work starts. You decide â€” zero pressure.", icon: faFileContract },
+    { number: 3, title: "Flat-Rate Quote", description: "Written price before work starts. You decide — zero pressure.", icon: faFileContract },
     { number: 4, title: "Coat & Warranty", description: "Professional prep and install, cure guidance, 5-Year Coating Warranty.", icon: faCheckCircle },
   ];
 
   const localAreas = [
-    { town: "Waco", benefit: "Home base â€” fastest scheduling in the city.", badge: "Home Base" },
+    { town: "Waco", benefit: "Home base — fastest scheduling in the city.", badge: "Home Base" },
     { town: "Hewitt", benefit: "Full residential and commercial coverage.", badge: "" },
     { town: "Woodway", benefit: "Regular availability for Woodway floors.", badge: "" },
     { town: "McGregor", benefit: "Reliable turnaround for McGregor customers.", badge: "" },
@@ -665,19 +665,19 @@ export default function ServicesPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Upfront, written pricing", us: "âœ… Always", others: "âŒ Vague estimates" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Every floor", others: "âŒ Rare or none" },
-    { feature: "Certified coatings installers", us: "âœ… All crews", others: "âŒ Not always" },
-    { feature: "Diamond grind prep included", us: "âœ… Standard", others: "âŒ Often skipped" },
-    { feature: "Clear cure / park-on timeline", us: "âœ… Always", others: "âŒ Guesswork" },
+    { feature: "Upfront, written pricing", us: "✅ Always", others: "❌ Vague estimates" },
+    { feature: "5-Year Coating Warranty", us: "✅ Every floor", others: "❌ Rare or none" },
+    { feature: "Certified coatings installers", us: "✅ All crews", others: "❌ Not always" },
+    { feature: "Diamond grind prep included", us: "✅ Standard", others: "❌ Often skipped" },
+    { feature: "Clear cure / park-on timeline", us: "✅ Always", others: "❌ Guesswork" },
   ];
 
   const faq = [
     { question: "How much does epoxy flooring cost in Waco?", answer: "Garage, metallic, flake, and commercial systems vary by size and scope. We always provide a flat-rate written quote after an on-site assessment." },
-    { question: "Are your installers certified?", answer: "Yes â€” PolyCoat crews are led by certified coatings installers and we are bonded and insured." },
-    { question: "Do you fix peeling epoxy?", answer: "Yes. Call (254) 980-1919 â€” we diagnose failures and recommend repair, recoat, or full strip when needed." },
+    { question: "Are your installers certified?", answer: "Yes — PolyCoat crews are led by certified coatings installers and we are bonded and insured." },
+    { question: "Do you fix peeling epoxy?", answer: "Yes. Call (254) 980-1919 — we diagnose failures and recommend repair, recoat, or full strip when needed." },
     { question: "What areas do you serve?", answer: "Waco, Hewitt, Woodway, McGregor, China Spring, Bellmead, Temple, Killeen, and most of Central Texas within about 60 miles of Waco." },
-    { question: "Do you offer a warranty?", answer: "Yes â€” every project is backed by our 5-Year Coating Warranty. Slip-resistant options available." },
+    { question: "Do you offer a warranty?", answer: "Yes — every project is backed by our 5-Year Coating Warranty. Slip-resistant options available." },
     { question: "How do I get a quote?", answer: "Call, text, or fill out our online form. We'll schedule a free on-site quote and provide written pricing before any work starts." },
   ];
 
@@ -689,9 +689,9 @@ export default function ServicesPage() {
       ]} />
       <SectionIntro
         title="Epoxy Flooring Services in Waco, TX"
-        subtitle="Garage epoxy, metallic, flake systems, commercial coatings, polish, and repairs â€” flat-rate quotes, certified installers, 5-Year Coating Warranty."
+        subtitle="Garage epoxy, metallic, flake systems, commercial coatings, polish, and repairs — flat-rate quotes, certified installers, 5-Year Coating Warranty."
       />
-      <TrustBar headline="2,400+ floors coated Â· 4.9â˜… from 700+ reviews across Central Texas" />
+      <TrustBar headline="2,400+ floors coated · 4.9★ from 700+ reviews across Central Texas" />
       <div className={styles.section}><ServiceCardComponent heading="What We Coat" cards={services} /></div>
       <div className={styles.section}><WhatToExpect sectionTitle="What to Expect" expectations={expectations} /></div>
       <div className={styles.section}><ImpactMetrics metrics={metrics} cityName="Waco" /></div>
@@ -724,8 +724,8 @@ export default function ServicesPage() {
 }
 `);
 
-// â”€â”€ Industries index â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-w('src/app/industries/page.tsx', `// PolyCoat Floors â€” Industries Overview
+// ── Industries index ─────────────────────────────────────────────────────────
+w('src/app/industries/page.tsx', `// PolyCoat Floors — Industries Overview
 "use client";
 
 import styles from "./page.module.scss";
@@ -775,7 +775,7 @@ export default function IndustriesPage() {
   const whyFeatures = [
     { icon: faShieldHalved, title: "Bonded & Insured", description: "COIs and documentation ready for builders, shops, and facility managers." },
     { icon: faUsers, title: "Schedule-Driven Crews", description: "We protect openings, service hours, and production calendars." },
-    { icon: faClock, title: "Clear Scopes", description: "Written scopes and flat-rate commercial quotes â€” not open-ended surprises." },
+    { icon: faClock, title: "Clear Scopes", description: "Written scopes and flat-rate commercial quotes — not open-ended surprises." },
   ];
 
   const processSteps = [
@@ -792,9 +792,9 @@ export default function IndustriesPage() {
   ];
 
   const faq = [
-    { question: "Do you work with homebuilders?", answer: "Yes â€” production and custom garage coatings coordinated with construction schedules." },
-    { question: "Can you coat active auto shops?", answer: "Yes â€” we plan access and phases so shops can keep limited operations when needed." },
-    { question: "Do you provide COIs quickly?", answer: "Yes â€” insurance documentation is standard for commercial accounts." },
+    { question: "Do you work with homebuilders?", answer: "Yes — production and custom garage coatings coordinated with construction schedules." },
+    { question: "Can you coat active auto shops?", answer: "Yes — we plan access and phases so shops can keep limited operations when needed." },
+    { question: "Do you provide COIs quickly?", answer: "Yes — insurance documentation is standard for commercial accounts." },
     { question: "What industries do you serve?", answer: "Homebuilders, auto shops, warehouses, and related commercial facilities across Central Texas." },
   ];
 
@@ -808,7 +808,7 @@ export default function IndustriesPage() {
         title="Industries We Serve"
         subtitle="Epoxy flooring partner for homebuilders, auto shops, and warehouses across Waco and Central Texas."
       />
-      <TrustBar headline="Certified coatings installers Â· Bonded & insured Â· Schedule-driven commercial work" />
+      <TrustBar headline="Certified coatings installers · Bonded & insured · Schedule-driven commercial work" />
       <div className={styles.section}><ServiceCardComponent heading="Who We Partner With" cards={industries} /></div>
       <div className={styles.section}><WhyChooseUs cityName="Waco" features={whyFeatures} title="Why Businesses Choose PolyCoat" /></div>
       <div className={styles.section}><ProcessTimeline steps={processSteps} /></div>
@@ -837,11 +837,11 @@ export default function IndustriesPage() {
 }
 `);
 
-// â”€â”€ Layout metadata cleanup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Layout metadata cleanup ──────────────────────────────────────────────────
 patch('src/app/layout.tsx', (t) => {
   t = t.replace(
     /default: "PolyCoat Floors \|[^"]+"/,
-    'default: "PolyCoat Floors | Garage Epoxy, Metallic & Commercial Floors â€” Waco, TX"'
+    'default: "PolyCoat Floors | Garage Epoxy, Metallic & Commercial Floors — Waco, TX"'
   );
   t = t.replace(
     /description:\s*\n\s*"PolyCoat Floors is[^"]+"/,
@@ -897,7 +897,7 @@ patch('components/GeneralComponents/Footer/Footer.tsx', (t) =>
     .replace(/tel:\+1254\d+/g, 'tel:+12549801919')
     .replace(/\(254\) \d{3}-\d{4}/g, '(254) 980-1919')
     .replace(/1800 S University Parks Dr/g, '3300 Lake Air Dr')
-    .replace(/Garage Epoxy Â· Metallic floors Â· Flake Systems/g, 'Garage Epoxy Â· Metallic Â· Commercial Floors')
+    .replace(/Garage Epoxy · Metallic floors · Flake Systems/g, 'Garage Epoxy · Metallic · Commercial Floors')
 );
 
 // Shared component defaults

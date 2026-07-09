@@ -74,11 +74,11 @@ export default function ServicesPage() {
   ];
 
   const comparisonRows = [
-    { feature: "Upfront, written pricing", us: "âœ… Always", others: "âŒ Vague estimates" },
-    { feature: "5-Year Coating Warranty", us: "âœ… Every floor", others: "âŒ Rare or none" },
-    { feature: "Certified coatings installers", us: "âœ… All crews", others: "âŒ Not always" },
-    { feature: "Diamond grind prep included", us: "âœ… Standard", others: "âŒ Often skipped" },
-    { feature: "Clear cure / park-on timeline", us: "âœ… Always", others: "âŒ Guesswork" },
+    { feature: "Upfront, written pricing", us: "✅ Always", others: "❌ Vague estimates" },
+    { feature: "5-Year Coating Warranty", us: "✅ Every floor", others: "❌ Rare or none" },
+    { feature: "Certified coatings installers", us: "✅ All crews", others: "❌ Not always" },
+    { feature: "Diamond grind prep included", us: "✅ Standard", others: "❌ Often skipped" },
+    { feature: "Clear cure / park-on timeline", us: "✅ Always", others: "❌ Guesswork" },
   ];
 
   const faq = [
@@ -100,7 +100,7 @@ export default function ServicesPage() {
         title="Epoxy Flooring Services in Waco, TX"
         subtitle="Garage epoxy, metallic, flake systems, commercial coatings, polish, and repairs — flat-rate quotes, certified installers, 5-Year Coating Warranty."
       />
-      <TrustBar headline="2,400+ floors coated · 4.9â˜… from 700+ reviews across Central Texas" />
+      <TrustBar headline="2,400+ floors coated · 4.9★ from 700+ reviews across Central Texas" />
       <div className={styles.section}><ServiceCardComponent heading="What We Coat" cards={services} /></div>
       <div className={styles.section}><WhatToExpect sectionTitle="What to Expect" expectations={expectations} /></div>
       <div className={styles.section}><ImpactMetrics metrics={metrics} cityName="Waco" /></div>
