@@ -26,7 +26,7 @@ export default function BlogHero({
   category,
   date,
   readTime,
-  authorName = 'Scott Applications',
+  authorName = 'PolyCoat Floors',
 }: BlogHeroProps) {
   return (
     <motion.header
@@ -48,7 +48,7 @@ export default function BlogHero({
             fill
             style={{ objectFit: 'cover' }}
             priority
-            sizes="(max-width: 768px) 100vw, 1200px"
+            sizes="(max-width: 768px) 100vw, 4000px"
           />
           <div className={styles.imageOverlay} aria-hidden="true" />
         </motion.div>
