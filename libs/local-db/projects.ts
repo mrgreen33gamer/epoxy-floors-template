@@ -1,15 +1,14 @@
 // libs/local-db/projects.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Central data store for all projects & clients shown on the /projects page.
-// Edit here — the ProjectCardGrid component reads from this file automatically.
-//
-// ADDING A PROJECT:
-//   1. Add an entry to the correct category array below.
-//   2. Drop your images in /public/pages/home/references/clientProfiles/{slug}/carousel/
-//   3. That's it. No other files need to change.
-// ─────────────────────────────────────────────────────────────────────────────
+// Central data store for PolyCoat Floors projects shown on
+// /projects and /projects/[slug]. Images reuse existing gallery assets.
 
-export type ProjectCategory = 'Web Design' | 'Software';
+export type ProjectCategory =
+  | 'Garage Epoxy'
+  | 'Metallic Epoxy'
+  | 'Flake Systems'
+  | 'Commercial Epoxy'
+  | 'Concrete Polish'
+  | 'Floor Repair & Recoat';
 
 export interface ProjectImage {
   src: string;
@@ -20,400 +19,234 @@ export interface ProjectImage {
 export interface Project {
   id: string;
   title: string;
-  contactName?: string;
   client: string;
   location: string;
   category: ProjectCategory;
   year: string;
-  /** 2–3 sentence teaser shown on the card */
   shortDesc: string;
-  /** Full story shown in the modal */
   fullDesc: string;
-  /** Headline metric badge on the card image */
   result: string;
   tags: string[];
-  /** images[0] = card thumbnail + modal hero */
   images: ProjectImage[];
-  /** Optional — shows "Visit Site" button in the modal */
-  liveUrl?: string;
-  /** true = offline / no live URL */
-  offline?: boolean;
+  beforeImage?: ProjectImage;
+  afterImage?: ProjectImage;
+  sqft?: string;
+  duration?: string;
   featured?: boolean;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// WEB DESIGN
-// ─────────────────────────────────────────────────────────────────────────────
-const webDesignProjects: Project[] = [
+const g = (name: string) => `/projects/gallery/${name}`;
+
+const garage: Project[] = [
   {
-    id: 'graciano-family-chiro',
-    title: 'Graciano Family Chiro',
-    contactName: 'Dr. Kevin Graciano',
-    client: 'Graciano Family Chiro',
-    location: 'Waxahachie, TX',
-    category: 'Web Design',
+    id: 'woodway-flake-garage',
+    title: 'Woodway Full-Broadcast Flake Garage',
+    client: 'Private Residence',
+    location: 'Woodway, TX',
+    category: 'Flake Systems',
     year: '2026',
-    shortDesc:
-      'Clean, minimalist healthcare website for a family chiropractic practice — designed to convert local searches into booked appointments.',
-    fullDesc:
-      'Dr. Kevin Graciano runs an evidence-based and holistic chiropractic practice in Waxahachie, TX, specializing in auto injury, wellness care, pregnancy chiropractic (Webster technique), and soft tissue therapies. He needed a site that communicated professionalism and warmth without clutter or the need of an ongoing web retainer. We built a minimalist Next.js/React site with appointment request forms, service detail pages, Google Business integration, and local SEO structured for Waxahachie chiropractic searches. Simple, fast, and effective.',
-    result: 'No Web Retainer',
-    tags: ['Next.js', 'React', 'Healthcare SEO', 'Minimalist UI'],
+    duration: '3 days',
+    sqft: '480 sq ft',
+    shortDesc: 'Two-car garage with diamond grind prep, full flake broadcast, and slip-resistant topcoat.',
+    fullDesc: 'The existing bare concrete was oil-stained and dusty. PolyCoat diamond-ground the surface, repaired cracks, and installed a full-broadcast flake system with a clear protective topcoat. Homeowners received clear park-on guidance before vehicles returned.',
+    result: 'Full System Install',
+    tags: ['Flake', 'Two-Car', 'Woodway'],
     images: [
-      { src: '/pages/home/references/clientProfiles/gracianofamilychiro/carousel/image-1.png', alt: 'Graciano Family Chiro homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gracianofamilychiro/carousel/image-2.png', alt: 'Services listing', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gracianofamilychiro/carousel/image-3.png', alt: 'Contact & booking', caption: '' },
+      { src: g('2.png'), alt: 'Finished flake garage epoxy floor', caption: 'Completed garage' },
+      { src: g('3.png'), alt: 'Flake garage floor detail', caption: '' },
     ],
-    liveUrl: 'https://gracianofamilychiro.com/',
+    beforeImage: { src: g('4.png'), alt: 'Stained garage floor before coating' },
+    afterImage:  { src: g('2.png'), alt: 'Garage after PolyCoat flake system' },
     featured: true,
   },
   {
-    id: 'oscars-tree-service',
-    title: "Oscar's Tree Service — Local SEO + Website",
-    contactName: 'Oscar Lopez',
-    client: "Oscar's Tree Service",
-    location: 'Waco, TX',
-    category: 'Web Design',
+    id: 'hewitt-solid-garage',
+    title: 'Hewitt Solid-Color Garage Epoxy',
+    client: 'Private Residence',
+    location: 'Hewitt, TX',
+    category: 'Garage Epoxy',
     year: '2025',
-    shortDesc:
-      'Code-based Next.js/React website and local SEO campaign for a Waco tree service — built to rank and convert in a crowded local market.',
-    fullDesc:
-      'Oscar Lopez is a certified arborist who has been running one of the best tree service crews in Central Texas since 2020, but had zero online presence when he came to us. We built him a fast, photo-heavy Next.js/React website with a prominent CTA and quote request form, then launched a local SEO strategy targeting Waco, Temple, Belton, Killeen, and surrounding areas. His phone started ringing within the first week of launch.',
-    result: 'Code-based Website',
-    tags: ['Next.js', 'React', 'Local SEO', 'Google Business'],
+    duration: '2 days',
+    sqft: '400 sq ft',
+    shortDesc: 'Clean solid-color epoxy with moisture check and durable topcoat for daily parking.',
+    fullDesc: 'Homeowners wanted a modern solid look without flakes. PolyCoat prepped thoroughly, applied a solid epoxy base, and sealed with a wear-ready topcoat suited to hot-tire traffic.',
+    result: 'Solid Color System',
+    tags: ['Solid Color', 'Hewitt', 'Garage'],
     images: [
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-1.png', alt: "Oscar's Tree Service homepage", caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-3.png', alt: 'Gallery', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-4.png', alt: 'Mobile view', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-5.png', alt: 'Contact', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-6.png', alt: 'SEO landing', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-7.png', alt: 'About', caption: '' },
-      { src: '/pages/home/references/clientProfiles/oscarstreeservice/carousel/image-8.png', alt: 'Footer', caption: '' },
+      { src: g('5.png'), alt: 'Solid color garage epoxy floor', caption: '' },
+      { src: g('7.png'), alt: 'Garage epoxy edge detail', caption: '' },
     ],
-    liveUrl: 'https://www.oscartreeservice.org',
-  },
-  {
-    id: 'ogi-tree-service',
-    title: 'OGI Tree Service — Website',
-    client: 'OGI Tree Service',
-    location: 'Texas',
-    category: 'Web Design',
-    year: '2026',
-    shortDesc:
-      'Professional website for a tree service company — built to establish online presence and drive local service leads.',
-    fullDesc:
-      'Built a clean, service-focused website for OGI Tree Service. Designed to rank for local tree service searches and convert visitors into quote requests with a straightforward, mobile-first layout.',
-    result: 'Bold Modern Design',
-    tags: ['Web Design', 'Local SEO', 'Lead Capture'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/ogitreeservice/carousel/cover.png', alt: 'OGI Tree Service website', caption: 'All 3 Devices' },
-      { src: '/pages/home/references/clientProfiles/ogitreeservice/carousel/desktop.png', alt: 'OGI Tree Service website', caption: 'Desktop Contact Page' },
-      { src: '/pages/home/references/clientProfiles/ogitreeservice/carousel/mobile.png', alt: 'OGI Tree Service website', caption: 'Mobile Services Page' },
-      { src: '/pages/home/references/clientProfiles/ogitreeservice/carousel/tablet.png', alt: 'OGI Tree Service website', caption: 'Tablet Home Page' },
-    ],
-    liveUrl: 'https://OGITreeService.com',
-  },
-  {
-    id: 'everything-blocks',
-    title: 'Everything Blocks — Website',
-    contactName: 'Tim Wade',
-    client: 'Everything Blocks',
-    location: 'Dallas, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'E-commerce website for a Dallas-based company serving the North Texas market.',
-    fullDesc:
-      'Tim needed a site built to handle product listings and drive online sales. We built an e-commerce website with Google Ads-optimized landing pages, positioning Everything Blocks as the go-to destination for their North Texas customer base.',
-    result: 'Shopify E-Commerce',
-    tags: ['Web Design', 'E-Commerce', 'Google Ads'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/everythingblocks/carousel/image-1.png', alt: 'Everything Blocks homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/everythingblocks/carousel/image-2.png', alt: 'Product catalog', caption: '' },
-      { src: '/pages/home/references/clientProfiles/everythingblocks/carousel/image-3.png', alt: 'Contractor portal', caption: '' },
-      { src: '/pages/home/references/clientProfiles/everythingblocks/carousel/image-4.png', alt: 'Contact page', caption: '' },
-      { src: '/pages/home/references/clientProfiles/everythingblocks/carousel/image-5.png', alt: 'Contact page', caption: '' },
-    ],
-    liveUrl: 'https://www.everythingblocks.com',
-  },
-  {
-    id: 'hot-rocks-asphalt',
-    title: 'Hot Rocks Asphalt',
-    contactName: 'Jesse Stanley',
-    client: 'Hot Rocks Asphalt',
-    location: 'Waco, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Minimalist Next.js/React service website for a Waco asphalt company — built for speed, mobile, and local search.',
-    fullDesc:
-      "Jesse Stanley's Hot Rocks Asphalt Inc. specializes in asphalt paving, seal coating, and repair across a wide swath of Central Texas. We built a minimalist Next.js/React website with a prominent free estimate form, before/after gallery, and service area pages targeting Waco, Killeen, Temple, China Spring, Valley Mills, Hewitt, Woodway, and Robinson. Local SEO and Google Business optimization included.",
-    result: '+Quote Requests',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'Local SEO'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-1.png', alt: 'Hot Rocks Asphalt homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-3.png', alt: 'Gallery', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-4.png', alt: 'Estimate form', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-5.png', alt: 'Service areas', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-6.png', alt: 'About', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-7.png', alt: 'Mobile view', caption: '' },
-      { src: '/pages/home/references/clientProfiles/hotrocksasphalt/carousel/image-8.png', alt: 'Footer', caption: '' },
-    ],
-    liveUrl: 'https://www.hotrocks-asphalt.com',
-  },
-  {
-    id: 'gtsdigs',
-    title: "GT's Digs — (Wix)",
-    contactName: 'Gene Tolbert',
-    client: "GT's Digs",
-    location: 'Elgin, TX',
-    category: 'Web Design',
-    year: '2023',
-    shortDesc:
-      'Minimalist Wix website for an Elgin-based excavation and site prep company serving Central Texas contractors and landowners.',
-    fullDesc:
-      "Gene needed a clean, professional web presence fast. We built a minimalist Wix site for GT's Digs with a service listing, project gallery, and quote request form. Local SEO targeting Elgin, Bastrop, and the Austin metro was included to drive inbound leads.",
-    result: 'Brand + Web Live',
-    tags: ['Wix', 'Minimalist UI', 'Local SEO', 'Quote Forms'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-1.png', alt: "GT's Digs homepage", caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-3.png', alt: 'Gallery', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-4.png', alt: 'Quote form', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-5.png', alt: 'About', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-6.png', alt: 'Mobile', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gtsdigs/carousel/image-7.png', alt: 'Footer', caption: '' },
-    ],
-    liveUrl: 'https://www.gtsdigs.com',
-  },
-  {
-    id: 'gallery11-waco',
-    title: 'Gallery 11 Waco',
-    contactName: 'Kara Ballard',
-    client: 'Gallery 11 Waco',
-    location: 'Waco, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Minimalist Next.js/React website for a Waco crystals and gems jewelry shop — clean layout that lets the products speak for themselves.',
-    fullDesc:
-      "Kara Ballard opened Gallery 11 in January 2023 at 1319 Austin Avenue in Downtown Waco — a curated crystals and gems jewelry shop focused on high-quality stones and a welcoming community vibe. She needed a site that matched the shop's warmth and aesthetic. We built a minimalist Next.js/React site with a product showcase, shop information, and contact details. Clean typography and generous whitespace keep the focus on the gems.",
-    result: 'Shop Live',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'E-Commerce'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-1.png', alt: 'Gallery 11 Waco homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-2.png', alt: 'Current collection', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-3.png', alt: 'Crystals & gems', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-4.png', alt: 'Shop', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-5.png', alt: 'Events', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-6.png', alt: 'About', caption: '' },
-      { src: '/pages/home/references/clientProfiles/gallery11waco/carousel/image-7.png', alt: 'Mobile', caption: '' },
-    ],
-    liveUrl: 'https://www.gallery11waco.com',
-  },
-  {
-    id: 'f5-portable-solutions',
-    title: 'F5 Portable Solutions',
-    contactName: 'Stephanie Ferguson',
-    client: 'F5 Portable Solutions',
-    location: 'Waco, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Minimalist Next.js/React website for a portable restroom rental company serving events and job sites across Central Texas.',
-    fullDesc:
-      'Stephanie needed a no-fluff site that made it fast and easy to request a quote. We built a minimalist Next.js/React site with a clean service breakdown and a multi-step quote form. Google Business optimization and local SEO targeting Waco, Temple, and Killeen were built in.',
-    result: 'Quote Requests Up',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'Local SEO'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/f5portablesolutions/carousel/image-1.png', alt: 'F5 Portable Solutions homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/f5portablesolutions/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/f5portablesolutions/carousel/image-3.png', alt: 'Quote form', caption: '' },
-    ],
-    liveUrl: 'https://www.f5portablesolutions.com/',
-  },
-  {
-    id: 'bennington-hhc',
-    title: 'Bennington HHC — (WIX)',
-    contactName: 'Amanda Menchaca',
-    client: 'Bennington HHC',
-    location: 'San Marcos, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Home Health Care website made using Wix — focused on trust and clarity for families seeking care.',
-    fullDesc:
-      'Amanda needed a site that balanced warmth with professionalism in a minimal package. We built a clean Wix site focused on trust signals — licensing info, service descriptions, and a contact form for both families and prospective employees. Local SEO targets San Marcos, Kyle, and Buda.',
-    result: 'Family Inquiries Up',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'Healthcare SEO'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/benningtonhhc/carousel/image-1.png', alt: 'Bennington HHC homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/benningtonhhc/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/benningtonhhc/carousel/image-3.png', alt: 'About', caption: '' },
-      { src: '/pages/home/references/clientProfiles/benningtonhhc/carousel/image-4.png', alt: 'Contact', caption: '' },
-    ],
-    liveUrl: 'https://www.benningtonhhc.com',
-  },
-  {
-    id: 'cen-tex-landscaping',
-    title: 'Cen-Tex Landscaping & Irrigation',
-    contactName: 'Cavin Harrison',
-    client: 'Cen-Tex Landscaping & Irrigation',
-    location: 'China Spring, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Minimalist Next.js/React service website for a China Spring landscaping and irrigation company serving the greater Waco area.',
-    fullDesc:
-      'Cavin needed a clean, fast site that showcased his range of work without the fluff. We built a minimalist Next.js/React website with a services section, photo gallery, free estimate form, and service area pages for Waco, China Spring, Woodway, and Hewitt.',
-    result: 'Local Leads Flowing',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'Local SEO'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/cen-texlandscaping/carousel/image-1.png', alt: 'Cen-Tex Landscaping homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texlandscaping/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texlandscaping/carousel/image-3.png', alt: 'Gallery', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texlandscaping/carousel/image-4.png', alt: 'Contact', caption: '' },
-    ],
-    liveUrl: 'https://www.cen-texlandscaping.com',
-  },
-  {
-    id: 'cen-tex-utilities',
-    title: 'Cen-Tex Utilities',
-    contactName: 'Billy Harrison',
-    client: 'Cen-Tex Utilities',
-    location: 'China Spring, TX',
-    category: 'Web Design',
-    year: '2024',
-    shortDesc:
-      'Minimalist Next.js/React website for a Central Texas utilities and infrastructure company serving municipalities and contractors.',
-    fullDesc:
-      'Billy needed a clean, authority-forward site built for commercial and municipal contacts. We built a minimalist Next.js/React website with a service breakdown, project portfolio, and a contact form designed for RFP and quote submissions. Local SEO targets utility and infrastructure searches across the Waco metro.',
-    result: 'Commercial Leads In',
-    tags: ['Next.js', 'React', 'Minimalist UI', 'B2B Design'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/cen-texutilities/carousel/image-1.png', alt: 'Cen-Tex Utilities homepage', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texutilities/carousel/image-2.png', alt: 'Services', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texutilities/carousel/image-3.png', alt: 'Portfolio', caption: '' },
-      { src: '/pages/home/references/clientProfiles/cen-texutilities/carousel/image-4.png', alt: 'Contact', caption: '' },
-    ],
-    liveUrl: 'https://cen-texutilities.com',
+    featured: true,
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// SOFTWARE
-// ─────────────────────────────────────────────────────────────────────────────
-const softwareProjects: Project[] = [
+const metallic: Project[] = [
   {
-    id: 'scott-apps-invoicing',
-    title: 'Scott Apps — Invoicing SaaS Platform',
-    contactName: 'Joshua Feliciano',
-    client: 'Scott Applications LLC',
+    id: 'waco-metallic-showroom',
+    title: 'Waco Metallic Showroom Floor',
+    client: 'Local Retailer',
     location: 'Waco, TX',
-    category: 'Software',
-    year: '2026',
-    shortDesc:
-      'Our own SaaS product — a clean, lightning-fast invoicing tool built for small businesses, freelancers, and contractors across Texas.',
-    fullDesc:
-      "Scott Apps is our own product, not a client job. A dead-simple invoicing platform: create and send professional invoices in under 60 seconds, track payments, auto-send reminders, and accept cards via Stripe. Built on Next.js 15, MongoDB, and deployed on Vercel. It's live, it's used, and it proves we don't just talk tech — we ship it.",
-    result: 'Live SaaS Product',
-    tags: ['Next.js', 'MongoDB', 'Stripe', 'Vercel', 'TypeScript'],
+    category: 'Metallic Epoxy',
+    year: '2025',
+    duration: '4 days',
+    sqft: '900 sq ft',
+    shortDesc: 'Custom metallic epoxy with high-gloss clear coat for a retail showroom.',
+    fullDesc: 'Client wanted a signature floor that felt premium under showroom lighting. PolyCoat designed a two-tone metallic flow, prepped the slab, and finished with a durable clear topcoat.',
+    result: 'Showpiece Metallic',
+    tags: ['Metallic', 'Showroom', 'Waco'],
+    images: [
+      { src: g('ertret.png'), alt: 'Metallic epoxy showroom floor', caption: '' },
+      { src: g('etru7.png'), alt: 'Metallic epoxy depth and movement', caption: '' },
+    ],
     featured: true,
-    images: [
-      { src: '/pages/home/references/clientProfiles/scottapps/carousel/image-1.png', alt: 'Scott Apps invoicing dashboard', caption: '' },
-      { src: '/pages/home/references/clientProfiles/scottapps/carousel/image-2.png', alt: 'Invoice creation', caption: '' },
-      { src: '/pages/home/references/clientProfiles/scottapps/carousel/image-3.png', alt: 'Payment tracking', caption: '' },
-    ],
-    liveUrl: 'https://scottapps.com',
-  },
-  {
-    id: 'waco-exchange',
-    title: 'Waco Exchange — Multi-Marketplace Platform',
-    contactName: 'Joshua Feliciano',
-    client: 'Waco Exchange',
-    location: 'Waco, TX',
-    category: 'Software',
-    year: '2022',
-    shortDesc:
-      'Custom-built multi-marketplace platform connecting buyers and sellers across Central Texas — our own full-stack product.',
-    fullDesc:
-      'Waco Exchange is our own internal platform build — a local multi-marketplace for Central Texas. Full-stack custom development: marketplace listings, user accounts, messaging, search & filter, and a mobile-first UI. Built on Next.js, MongoDB, and deployed on Vercel. Currently offline.',
-    result: 'Platform Built',
-    tags: ['Next.js', 'MongoDB', 'Full-Stack', 'Marketplace', 'TypeScript'],
-    featured: true,
-    offline: true,
-    images: [
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-1.png', alt: 'Waco Exchange marketplace', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-2.png', alt: 'Listings', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-3.png', alt: 'Listing detail', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-4.png', alt: 'Mobile app', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-5.png', alt: 'Search & filter', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-6.png', alt: 'User profile', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-7.png', alt: 'Messaging', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-8.png', alt: 'Onboarding', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-9.png', alt: 'Settings', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-10.png', alt: 'Dashboard', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-11.png', alt: 'Admin panel', caption: '' },
-      { src: '/pages/home/references/clientProfiles/wacoexchange/carousel/image-12.png', alt: 'Final screens', caption: '' },
-    ],
-  },
-  {
-    id: 'nexus-esports',
-    title: 'Nexus e-Sports — Software & Site Setup',
-    contactName: 'Zach Krizan',
-    client: 'Nexus e-Sports',
-    location: 'Waco, TX',
-    category: 'Software',
-    year: '2023',
-    shortDesc:
-      "Custom software development and website setup for Waco's premier gaming, dining, and entertainment venue — accessible via domain.",
-    fullDesc:
-      "Zach Krizan founded Nexus as a state-of-the-art gaming, esports, and entertainment hub in Downtown Waco, now operating at 1603 Washington Ave. The venue features an esports arena, a trading card game shop, and Save Point Sandwich Shop — all under one roof. We built custom software accessible via their domain — membership management, tournament registration, and event tooling. Also handled initial website setup. The primary deliverable here was the code and platform logic behind the scenes, not the front-end design.",
-    result: 'Software Live',
-    tags: ['Custom Software', 'Next.js', 'Membership System', 'Event Tools'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/nexusesports/carousel/image-1.png', alt: 'Nexus e-Sports platform', caption: '' },
-      { src: '/pages/home/references/clientProfiles/nexusesports/carousel/image-2.png', alt: 'Events & booking', caption: '' },
-    ],
-    liveUrl: 'https://www.nexuswaco.com',
-  },
-  {
-    id: 'save-point-sandwich',
-    title: 'Save Point Sandwich — Software & Site Setup',
-    contactName: 'Zach Krizan',
-    client: 'Save Point Sandwich',
-    location: 'Waco, TX',
-    category: 'Software',
-    year: '2023',
-    shortDesc:
-      'Custom software and website setup for a retro gaming-themed sandwich shop inside Nexus Waco — online ordering and menu system accessible via domain.',
-    fullDesc:
-      "Save Point Sandwich Shop is a retro gaming-themed deli located inside Nexus Waco at 1603 Washington Ave. It was born out of Nexus to feed the hungry gamers who flooded the venue on event days, and has since grown into its own full restaurant with a cult following in Waco. We built the software backend and online ordering system accessible via their domain, alongside the website setup. Like Nexus, the primary work here was the code and ordering logic rather than the design layer.",
-    result: 'Ordering System Live',
-    tags: ['Custom Software', 'Online Ordering', 'Next.js', 'Site Setup'],
-    images: [
-      { src: '/pages/home/references/clientProfiles/savepointsandwich/carousel/image-1.png', alt: 'Save Point Sandwich platform', caption: '' },
-    ],
-    liveUrl: 'https://www.savepointsandwich.com',
   },
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// EXPORTS
-// ─────────────────────────────────────────────────────────────────────────────
+const flake: Project[] = [
+  {
+    id: 'china-spring-shop-flake',
+    title: 'China Spring Shop Flake System',
+    client: 'Private Shop',
+    location: 'China Spring, TX',
+    category: 'Flake Systems',
+    year: '2025',
+    duration: '3 days',
+    sqft: '600 sq ft',
+    shortDesc: 'Full-broadcast flake system for a detached shop with vehicle and tool traffic.',
+    fullDesc: 'Detached shop floor with oil history needed aggressive prep and a durable flake system. PolyCoat ground, repaired, and installed a dense flake broadcast with slip-resistant topcoat.',
+    result: 'Shop-Ready Flake',
+    tags: ['Flake', 'Shop', 'China Spring'],
+    images: [
+      { src: g('qwe.png'), alt: 'Shop flake epoxy floor', caption: '' },
+    ],
+  },
+];
 
-export const ALL_PROJECTS: Project[] = [
-  ...webDesignProjects,
-  ...softwareProjects,
+const commercial: Project[] = [
+  {
+    id: 'temple-auto-shop',
+    title: 'Temple Auto Shop Service Bays',
+    client: 'Independent Auto Shop',
+    location: 'Temple, TX',
+    category: 'Commercial Epoxy',
+    year: '2025',
+    duration: '5 days',
+    sqft: '2,200 sq ft',
+    shortDesc: 'Chemical-resistant commercial epoxy for active service bays with phased access.',
+    fullDesc: 'Oil-stained bays needed a durable, cleanable surface. PolyCoat phased the install so the shop could keep limited operations, using a commercial system suited to vehicle traffic and fluids.',
+    result: 'Commercial Shop System',
+    tags: ['Auto Shop', 'Commercial', 'Temple'],
+    images: [
+      { src: g('ewew.png'), alt: 'Commercial auto shop epoxy floor', caption: '' },
+      { src: g('gythgnb.png'), alt: 'Service bay coated floor', caption: '' },
+    ],
+    featured: true,
+  },
+  {
+    id: 'killeen-warehouse-phase',
+    title: 'Killeen Warehouse Aisle Phase',
+    client: 'Distribution Facility',
+    location: 'Killeen, TX',
+    category: 'Commercial Epoxy',
+    year: '2024',
+    duration: '1 week',
+    sqft: '4,500 sq ft',
+    shortDesc: 'Phased warehouse coating for high-traffic aisles with abrasion-resistant topcoat.',
+    fullDesc: 'Facility managers needed durable floors without shutting the entire building. PolyCoat coated critical aisles in phases with a system selected for forklift traffic.',
+    result: 'Phased Facility Coat',
+    tags: ['Warehouse', 'Phased', 'Killeen'],
+    images: [
+      { src: g('htf.png'), alt: 'Warehouse epoxy floor aisle', caption: '' },
+      { src: g('iou.png'), alt: 'Commercial warehouse coated concrete', caption: '' },
+    ],
+  },
+];
+
+const polish: Project[] = [
+  {
+    id: 'woodway-retail-polish',
+    title: 'Woodway Retail Polished Floor',
+    client: 'Boutique Retail',
+    location: 'Woodway, TX',
+    category: 'Concrete Polish',
+    year: '2025',
+    duration: '3 days',
+    sqft: '1,100 sq ft',
+    shortDesc: 'Multi-step polish to a refined sheen for a modern retail suite.',
+    fullDesc: 'Client preferred natural concrete character over a full coating. PolyCoat ground and polished to an agreed sheen with densifier for easier maintenance.',
+    result: 'Polished Retail Floor',
+    tags: ['Polish', 'Retail', 'Woodway'],
+    images: [
+      { src: g('iytyuhn.png'), alt: 'Polished concrete retail floor', caption: '' },
+    ],
+  },
+];
+
+const repair: Project[] = [
+  {
+    id: 'waco-peel-repair',
+    title: 'Waco Peeling Epoxy Strip & Recoat',
+    client: 'Private Residence',
+    location: 'Waco, TX',
+    category: 'Floor Repair & Recoat',
+    year: '2025',
+    duration: '3 days',
+    sqft: '420 sq ft',
+    shortDesc: 'Full removal of failed DIY coating and professional flake recoat.',
+    fullDesc: 'A previous DIY roll-on had peeled at tire paths. PolyCoat mechanically removed the failed film, properly ground the slab, and installed a professional flake system with warranty.',
+    result: 'Strip & Recoat',
+    tags: ['Repair', 'Recoat', 'Waco'],
+    images: [
+      { src: g('jyfhtgb.png'), alt: 'Garage after professional epoxy recoat', caption: '' },
+      { src: g('kgh.png'), alt: 'Recoated flake garage floor', caption: '' },
+    ],
+    beforeImage: { src: g('liukj.png'), alt: 'Peeling epoxy before repair' },
+    afterImage:  { src: g('jyfhtgb.png'), alt: 'Floor after PolyCoat recoat' },
+    featured: true,
+  },
+];
+
+const ALL_PROJECTS: Project[] = [
+  ...garage,
+  ...metallic,
+  ...flake,
+  ...commercial,
+  ...polish,
+  ...repair,
+];
+
+export const CATEGORIES: ProjectCategory[] = [
+  'Garage Epoxy',
+  'Metallic Epoxy',
+  'Flake Systems',
+  'Commercial Epoxy',
+  'Concrete Polish',
+  'Floor Repair & Recoat',
 ];
 
 export const PROJECTS_BY_CATEGORY: Record<ProjectCategory, Project[]> = {
-  'Web Design': webDesignProjects,
-  'Software': softwareProjects,
+  'Garage Epoxy': garage,
+  'Metallic Epoxy': metallic,
+  'Flake Systems': [...garage.filter(p => p.category === 'Flake Systems'), ...flake],
+  'Commercial Epoxy': commercial,
+  'Concrete Polish': polish,
+  'Floor Repair & Recoat': repair,
 };
 
-export const CATEGORIES: ProjectCategory[] = ['Web Design', 'Software'];
+export function getProjectBySlug(slug: string): Project | undefined {
+  return ALL_PROJECTS.find((p) => p.id === slug);
+}
+
+export function getProjectById(id: string): Project | undefined {
+  return ALL_PROJECTS.find((p) => p.id === id);
+}
+
+export function getFeaturedProjects(): Project[] {
+  return ALL_PROJECTS.filter((p) => p.featured);
+}
+
+export function getProjectsByCategory(category: ProjectCategory): Project[] {
+  return ALL_PROJECTS.filter((p) => p.category === category);
+}
 
 export default ALL_PROJECTS;

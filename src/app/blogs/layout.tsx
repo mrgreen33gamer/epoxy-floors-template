@@ -1,9 +1,9 @@
-// src/app/blog/layout.tsx
+// src/app/blogs/layout.tsx
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog – Tips for Waco Businesses",
-  description: "Practical advice on web design, software, graphic design, marketing, and growing your business in Waco and Central Texas.",
+  title: "Blog – Flooring Tips for Waco & Central Texas | PolyCoat Floors",
+  description: "Practical advice on hardwood, tile, LVP, carpet, and flooring care for Waco and Central Texas homeowners.",
 };
 
 export default function BlogLayout({

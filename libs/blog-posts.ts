@@ -13,35 +13,35 @@ export interface BlogPost {
 
 const ALL_POSTS: BlogPost[] = [
   {
-    slug:     'signs-ac-needs-replacement-waco-tx',
-    title:    '7 Signs Your AC Unit Needs Replacing in Waco, TX (Not Just Repairing)',
-    excerpt:  'Texas heat is brutal on AC systems. Here are the 7 clear warning signs it’s time to replace — not just repair — before your next $500 breakdown.',
-    category: 'AC',
+    slug:     'epoxy-vs-polyaspartic-floors',
+    title:    'Epoxy vs. Polyaspartic Floors: Which Is Right for Your Garage?',
+    excerpt:  'Cure time, UV stability, cost, and durability — how to choose between epoxy and polyaspartic garage systems in Central Texas.',
+    category: 'Coatings',
     date:     'April 18, 2026',
-    readTime: 7,
+    readTime: 8,
     imageSrc: '/pages/blogs/ac-replacement.jpg',
-    imageAlt: 'Signs your air conditioner needs replacing in Waco TX',
+    imageAlt: 'Epoxy versus polyaspartic garage floor comparison',
     featured: true,
   },
   {
-    slug:     'how-often-should-you-replace-hvac-filter',
-    title:    'How Often Should You Replace Your HVAC Filter in Central Texas?',
-    excerpt:  'Texas dust, pollen, cedar, and summer heat destroy filters fast. Here’s the honest schedule for Waco, Temple, and Killeen homes — plus what happens when you wait too long.',
-    category: 'Maintenance',
+    slug:     'how-to-prep-garage-for-epoxy',
+    title:    'How to Prep Your Garage for Epoxy (What Pros Actually Do)',
+    excerpt:  'Moisture testing, diamond grinding, crack repair, and oil removal — the prep steps that decide coating longevity.',
+    category: 'Prep',
     date:     'April 14, 2026',
-    readTime: 6,
-    imageSrc: '/pages/blogs/hvac-filter.jpg',
-    imageAlt: 'HVAC air filter replacement guide for Central Texas homes',
+    readTime: 7,
+    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageAlt: 'Professional garage floor prep for epoxy',
   },
   {
-    slug:     'heat-pump-vs-traditional-hvac-texas',
-    title:    'Heat Pump vs. Traditional HVAC: What Makes Sense for Texas Homes in 2026?',
-    excerpt:  'Heat pumps are the hot new thing — but are they right for Central Texas summers and mild winters? Real pros, cons, and costs for Waco-area homeowners.',
-    category: 'Installation',
+    slug:     'metallic-epoxy-design-ideas',
+    title:    'Metallic Epoxy Design Ideas for Homes and Showrooms',
+    excerpt:  'Color movement, gloss, and layout ideas for metallic epoxy floors in homes, offices, and showrooms.',
+    category: 'Design',
     date:     'April 10, 2026',
-    readTime: 8,
+    readTime: 7,
     imageSrc: '/pages/blogs/heat-pump.jpg',
-    imageAlt: 'Heat pump vs traditional HVAC comparison for Texas homes',
+    imageAlt: 'Metallic epoxy floor design ideas',
   },
 ];
 
@@ -52,3 +52,5 @@ export function getPostsByCategory(category: string): BlogPost[] { return ALL_PO
 export function getPostBySlug(slug: string): BlogPost | undefined { return ALL_POSTS.find((p) => p.slug === slug); }
 export function getAllCategories(): string[] { return Array.from(new Set(ALL_POSTS.map((p) => p.category))); }
 export function getAllSlugs(): string[] { return ALL_POSTS.map((p) => p.slug); }
+
+export default ALL_POSTS;

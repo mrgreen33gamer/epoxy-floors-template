@@ -1,0 +1,68 @@
+@use 'sass:color';
+@use '../../globalVariables.scss' as *;
+
+.pageWrapper {
+  min-height: 100vh;
+  background: transparent;
+  padding-bottom: 4rem;
+}
+
+.breadcrumbRow {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 0;
+
+  @media (max-width: 768px) {
+    padding: 1.25rem 1.25rem 0;
+  }
+}
+
+.section {
+  margin-bottom: 5rem;
+}
+
+.metaPanel {
+  max-width: 1280px;
+  margin: -1.5rem auto 0;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  background: $offwhite;
+  border: 1px solid #e8e8e4;
+  border-radius: 12px;
+}
+
+.metaLabel {
+  font-family: $textFont;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $darkgrey;
+}
+
+.metaValue {
+  font-family: $headerFont;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $obsidian;
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin-bottom: 3rem;
+  }
+}
