@@ -15,7 +15,7 @@ const BADGES = [
       </svg>
     ),
     title: 'Licensed & Insured',
-    sub: 'TDLR Certified · $1M Coverage',
+    sub: 'Contractor · Fully Covered',
   },
   {
     icon: (
@@ -24,8 +24,8 @@ const BADGES = [
         <polyline points="12 6 12 12 16 14"/>
       </svg>
     ),
-    title: 'Same-Day Service',
-    sub: 'Emergency calls welcome',
+    title: 'Free Design Consults',
+    sub: 'Samples brought to you',
   },
   {
     icon: (
@@ -34,7 +34,7 @@ const BADGES = [
         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
       </svg>
     ),
-    title: 'Flat-Rate Pricing',
+    title: 'Flat-Rate Quotes',
     sub: 'No surprises, ever',
   },
   {
@@ -43,8 +43,8 @@ const BADGES = [
         <polyline points="20 6 9 17 4 12"/>
       </svg>
     ),
-    title: 'NATE Certified',
-    sub: 'Industry-trained techs',
+    title: 'Certified Coatings Installers',
+    sub: 'Built in Waco',
   },
   {
     icon: (
@@ -52,8 +52,8 @@ const BADGES = [
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     ),
-    title: '1-Year Warranty',
-    sub: 'Parts & labor guaranteed',
+    title: '5-Year Warranty',
+    sub: 'Craftsmanship guaranteed',
   },
   {
     icon: (
@@ -62,7 +62,7 @@ const BADGES = [
       </svg>
     ),
     title: '4.9★ Google Rating',
-    sub: '300+ verified reviews',
+    sub: '340+ verified reviews',
   },
 ];
 

@@ -15,8 +15,8 @@ interface BlogPreviewGridProps {
 }
 
 const BlogPreviewGrid: React.FC<BlogPreviewGridProps> = ({
-  title       = 'HVAC Tips & Insights',
-  subtitle    = 'Practical advice for Central Texas homeowners — when to repair, when to replace, and how to save money on your energy bill.',
+  title       = 'Epoxyry Tips & Insights',
+  subtitle    = 'Practical advice for Central Texas homeowners — materials, custom vs semi-custom, and when to refinish or replace.',
   posts,
   count       = 4,
   viewAllLink = '/blogs',
@@ -123,7 +123,7 @@ const BlogPreviewGrid: React.FC<BlogPreviewGridProps> = ({
 
             {/* Bottom CTA */}
             <Link href={viewAllLink} className={styles.allBtn}>
-              Browse All HVAC Articles
+              Browse All Epoxyry Articles
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <polyline points="9 18 15 12 9 6"/>
               </svg>

@@ -35,7 +35,7 @@ const CaseStudyGrid: React.FC<CaseStudyGridProps> = ({
           </div>
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.subtitle}>
-            Proof from the businesses we've helped grow across Central Texas.
+            Proof from the homes and businesses we've built across Central Texas.
           </p>
         </div>
 

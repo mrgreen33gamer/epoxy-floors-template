@@ -175,7 +175,7 @@
   @media (max-width: 960px) { display: none; }
 
   // On mid-range screens shrink slightly
-  @media (min-width: 961px) and (max-width: 1200px) {
+  @media (min-width: 961px) and (max-width: 4000px) {
     width: 380px; height: 380px;
   }
 }
@@ -388,7 +388,7 @@
 .sc4 { bottom: 38px; right: 12px; }
 
 // Scale down positions for smaller visual on mid screens
-@media (min-width: 961px) and (max-width: 1200px) {
+@media (min-width: 961px) and (max-width: 4000px) {
   .sc1 { top: 14px; left: 8px; }
   .sc2 { top: 14px; right: 8px; }
   .sc3 { bottom: 32px; left: 8px; }

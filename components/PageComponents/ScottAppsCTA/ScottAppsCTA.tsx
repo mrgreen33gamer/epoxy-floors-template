@@ -71,7 +71,7 @@ const ScottAppsCTA: React.FC<ScottAppsCTAProps> = ({
 
             <div className={styles.ctaRow}>
               <Link
-                href="https://scottapps.com/invoicing"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.btnPrimary}
@@ -99,7 +99,7 @@ const ScottAppsCTA: React.FC<ScottAppsCTAProps> = ({
             <div className={styles.cardHeader}>
               <div className={styles.cardBrand}>
                 <FontAwesomeIcon icon={faFileInvoiceDollar} />
-                <span>scottapps.com</span>
+                <span>polycoatfloors.com</span>
               </div>
               <div className={styles.cardBadge}>
                 <FontAwesomeIcon icon={faBolt} />

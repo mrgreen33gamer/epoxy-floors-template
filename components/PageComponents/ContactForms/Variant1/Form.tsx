@@ -19,15 +19,14 @@
 // it tighter after this JSX change, reduce `.card { padding: ... }` and
 // `.root { padding: ... 0 }` in the SCSS by ~20-30%.
 'use client';
-import { useState, useRef } from 'react';
+import {
+  useState, useRef } from 'react';
 import styles from './styles.module.scss';
 import { PulseLoader } from 'react-spinners';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleCheck, faExclamationTriangle, faArrowRight,
-  faPhone, faStar, faShieldHalved, faClock, faTag,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind, faBolt,
+  faCircleCheck, faExclamationTriangle, faArrowRight, faPhone, faStar, faShieldHalved, faClock, faTag, faWarehouse, faGem, faPaintRoller, faWrench, faIndustry, faBolt
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -38,21 +37,21 @@ interface Variant1Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair' },
-  { icon: faFire,            label: 'Heating / Furnace' },
-  { icon: faWrench,          label: 'New Installation' },
-  { icon: faFilter,          label: 'Duct Cleaning' },
-  { icon: faThermometerHalf, label: 'Maintenance' },
-  { icon: faWind,            label: 'Air Quality' },
-  { icon: faBolt,            label: 'Emergency' },
+  { icon: faWarehouse,       label: 'Garage Epoxy' },
+  { icon: faGem,             label: 'Metallic Epoxy' },
+  { icon: faPaintRoller,     label: 'Flake Systems' },
+  { icon: faIndustry,        label: 'Commercial Epoxy' },
+  { icon: faShieldHalved,    label: 'Concrete Polish' },
+  { icon: faWrench,          label: 'Floor Repair & Recoat' },
+  { icon: faBolt,            label: 'Other / Not Sure' },
 ];
 
 // Compact trust chips (replaces standalone .trustStrip block)
 const TRUST_CHIPS = [
-  { icon: faClock,        text: 'Same-day available' },
+  { icon: faClock,        text: 'Free quotes' },
   { icon: faTag,          text: 'Flat-rate pricing' },
-  { icon: faShieldHalved, text: 'NATE · TDLR' },
-  { icon: faStar,         text: '4.9★ · 300+ reviews' },
+  { icon: faShieldHalved, text: 'Certified · Insured' },
+  { icon: faStar,         text: '4.9★ · 700+ reviews' },
 ];
 
 export default function Variant1({ title, cityName, slug, spot, formVariant }: Variant1Props) {
@@ -133,12 +132,12 @@ export default function Variant1({ title, cityName, slug, spot, formVariant }: V
                 </div>
                 <h3 className={styles.successTitle}>Request Received!</h3>
                 <p className={styles.successText}>
-                  A licensed Arctic Air technician will reach out shortly. Keep an eye on your inbox and phone.
+                  A PolyCoat estimator will reach out shortly. Keep an eye on your inbox and phone.
                 </p>
                 <div className={styles.successBadges}>
                   <span>✓ Flat-rate quote</span>
                   <span>✓ No pressure</span>
-                  <span>✓ Same-day available</span>
+                  <span>✓ Free quotes</span>
                 </div>
               </motion.div>
             ) : (
@@ -171,7 +170,7 @@ export default function Variant1({ title, cityName, slug, spot, formVariant }: V
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="v1r-phone">Phone *</label>
                         <input id="v1r-phone" className={styles.input} name="phone" type="tel"
-                          placeholder="(254) 555-0100" required value={formData.phone} onChange={handleChange} />
+                          placeholder="(254) 980-1919" required value={formData.phone} onChange={handleChange} />
                       </div>
                     </div>
                     <div className={styles.field}>
@@ -206,9 +205,9 @@ export default function Variant1({ title, cityName, slug, spot, formVariant }: V
                     <div className={styles.altContact}>
                       <FontAwesomeIcon icon={faPhone} />
                       <span>Need help now?{' '}
-                        <a href="tel:+12549001234"
-                          onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Call (254) 900-1234', section: 'ContactForm-V1' })}>
-                          Call (254) 900-1234
+                        <a href="tel:+12549801919"
+                          onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Call (254) 980-1919', section: 'ContactForm-V1' })}>
+                          Call (254) 980-1919
                         </a>
                       </span>
                     </div>

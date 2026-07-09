@@ -11,8 +11,11 @@ interface HighlightedProjectProps {
   description: string;
   imageSrc: string;
   imageAlt: string;
+  tag?: string;
   projectLink?: string;
+  projectLinkLabel?: string;
   ctaLink?: string;
+  ctaLabel?: string;
 }
 
 const HighlightedProject: React.FC<HighlightedProjectProps> = ({
@@ -20,29 +23,30 @@ const HighlightedProject: React.FC<HighlightedProjectProps> = ({
   description,
   imageSrc,
   imageAlt,
-  projectLink = "https://scottapps.com/invoicing",
-  ctaLink = "/?pageSection=1",
+  tag = "Recent Project",
+  projectLink = "/contact",
+  projectLinkLabel = "Request a Free Estimate",
+  ctaLink = "/projects",
+  ctaLabel = "See All Projects",
 }) => {
   return (
     <section className={styles.section} aria-label="Highlighted Project">
       <div className={styles.container}>
         <div className={styles.textSide}>
           <div className={styles.card}>
-            <span className={styles.tag}>Recent Project</span>
+            <span className={styles.tag}>{tag}</span>
             <h2 className={styles.cardTitle}>{title}</h2>
             <p className={styles.cardDesc}>{description}</p>
             <div className={styles.ctaRow}>
               <Link
                 href={projectLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={styles.btnPrimary}
               >
-                Try Invoicing Software
+                {projectLinkLabel}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Link>
               <Link href={ctaLink} className={styles.btnGhost}>
-                Our Clients
+                {ctaLabel}
               </Link>
             </div>
           </div>

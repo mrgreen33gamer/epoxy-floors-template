@@ -33,10 +33,10 @@ export default function ProcessTimeline({ steps }: ProcessTimelineProps) {
             How It Works
           </span>
           <h2 className={styles.title}>
-            Fixed in <span className={styles.accent}>4 Simple Steps</span>
+            Built in <span className={styles.accent}>4 Simple Steps</span>
           </h2>
           <p className={styles.sub}>
-            No runaround. No hidden charges. Just fast, professional HVAC service from call to completion.
+            No runaround. No hidden charges. Just fast, professional epoxyry service from call to completion.
           </p>
         </motion.div>
 

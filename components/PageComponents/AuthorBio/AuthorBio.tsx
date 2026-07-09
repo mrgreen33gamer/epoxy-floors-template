@@ -14,31 +14,31 @@ interface AuthorBioProps {
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Joshua Feliciano",
-  jobTitle: "Founder & Lead Developer",
+  name: "Nina Park",
+  jobTitle: "Founder & Lead Coatings Specialist",
   worksFor: {
     "@type": "Organization",
-    name: "Scott Applications",
-    url: "https://www.scottapplications.com",
+    name: "PolyCoat Floors",
+    url: "https://www.polycoatfloors.com",
   },
-  url: "https://www.scottapplications.com/about",
+  url: "https://www.polycoatfloors.com/about",
   sameAs: [
-    "https://www.linkedin.com/in/joshua-feliciano-231765172/",
-    "https://www.scottapplications.com",
+    "https://www.facebook.com/polycoatfloors",
+    "https://www.polycoatfloors.com",
   ],
   knowsAbout: [
-    "Web Design", "Next.js Development", "Local SEO",
-    "Custom Software Development", "Graphic Design",
-    "Digital Marketing", "Central Texas Business",
+    "Garage Epoxy", "Metallic Epoxy", "Flake Systems",
+    "Commercial Floor Coatings", "Concrete Polish",
+    "Floor Repair & Recoat", "Central Texas Flooring",
   ],
   description:
-    "Founder of Scott Applications in Waco, TX. 10+ years building websites, custom software, and digital marketing solutions for Central Texas businesses. Direct developer — no middlemen.",
+    "Owner of PolyCoat Floors in Waco, TX. 12+ years coating garage floors, metallic epoxy, and commercial systems for Central Texas homes and businesses.",
 };
 
 const AuthorBio: React.FC<AuthorBioProps> = ({
   cityName,
   imageSrc = "/pages/seo-template-resources/owner.jpg",
-  imageAlt = "Joshua Feliciano - Founder of Scott Applications",
+  imageAlt = "Nina Park - Founder of PolyCoat Floors",
 }) => {
   const trackEvent = useTrackEvent();
 
@@ -67,8 +67,8 @@ const AuthorBio: React.FC<AuthorBioProps> = ({
         </div>
 
         <div className={styles.content}>
-          <p className={styles.role}>Founder & Lead Developer · Scott Applications</p>
-          <h2 className={styles.title}>Joshua Feliciano</h2>
+          <p className={styles.role}>Owner & Lead Coatings Specialist · PolyCoat Floors</p>
+          <h2 className={styles.title}>Nina Park</h2>
 
           <p className={styles.description}>
             10+ years building websites, software, and marketing systems for Central Texas
@@ -95,7 +95,7 @@ const AuthorBio: React.FC<AuthorBioProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className={styles.linkedinLink}
-              aria-label="Connect with Joshua Feliciano on LinkedIn"
+              aria-label="Connect with Nina Park on LinkedIn"
               onClick={() => trackEvent({
                 eventType:    'click',
                 elementLabel: 'Connect on LinkedIn',

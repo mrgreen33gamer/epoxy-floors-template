@@ -3,15 +3,14 @@
 //        'spot' prop is used as section so the admin dashboard can attribute
 //        conversions to the exact page/placement (e.g. 'services-page-form').
 'use client';
-import { useState, useRef } from 'react';
+import {
+  useState, useRef } from 'react';
 import styles from './styles.module.scss';
 import { PulseLoader } from 'react-spinners';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleCheck, faExclamationTriangle, faArrowRight,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf,
-  faWind, faBolt,
+  faCircleCheck, faExclamationTriangle, faArrowRight, faWarehouse, faGem, faShieldHalved, faPaintRoller, faWrench, faIndustry, faBolt, faPhone, faStar, faClock, faTag
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -22,13 +21,13 @@ interface Variant2Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair' },
-  { icon: faFire,            label: 'Heating / Furnace' },
-  { icon: faWrench,          label: 'New Installation' },
-  { icon: faFilter,          label: 'Duct Cleaning' },
-  { icon: faThermometerHalf, label: 'Maintenance' },
-  { icon: faWind,            label: 'Air Quality' },
-  { icon: faBolt,            label: 'Emergency' },
+  { icon: faWarehouse,       label: 'Garage Epoxy' },
+  { icon: faGem,             label: 'Metallic Epoxy' },
+  { icon: faPaintRoller,     label: 'Flake Systems' },
+  { icon: faIndustry,        label: 'Commercial Epoxy' },
+  { icon: faShieldHalved,    label: 'Concrete Polish' },
+  { icon: faWrench,          label: 'Floor Repair & Recoat' },
+  { icon: faBolt,            label: 'Other / Not Sure' },
 ];
 
 export default function Variant2({ title, cityName, slug, spot, formVariant }: Variant2Props) {
@@ -95,7 +94,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
               <p className={styles.quoteText}>
                 "Flat price. Show up on time. Fix it right. That's all anyone ever wants — and that's exactly what we do."
               </p>
-              <span className={styles.quoteAttrib}>— Arctic Air HVAC, Waco TX</span>
+              <span className={styles.quoteAttrib}>— PolyCoat Cabinetry & Millwork, Waco TX</span>
 
               <div className={styles.panelStats}>
                 {[
@@ -111,7 +110,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
               </div>
 
               <div className={styles.panelBadges}>
-                {['Same-Day Available', '1-Year Warranty', 'No Contracts', 'NATE Certified'].map(b => (
+                {['Same-Day Available', '5-Year Warranty', 'No Contracts', 'ACI-Trained'].map(b => (
                   <span key={b} className={styles.panelBadge}>
                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
                     {b}
@@ -177,7 +176,7 @@ export default function Variant2({ title, cityName, slug, spot, formVariant }: V
                       <div className={styles.field}>
                         <label className={styles.label} htmlFor="v2r-phone">Phone *</label>
                         <input id="v2r-phone" className={styles.input} name="phone" type="tel"
-                          placeholder="(254) 555-0100" required value={formData.phone} onChange={handleChange} />
+                          placeholder="(254) 980-1919" required value={formData.phone} onChange={handleChange} />
                       </div>
                     </div>
                     <div className={styles.field}>

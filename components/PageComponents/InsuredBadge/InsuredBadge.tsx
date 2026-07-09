@@ -24,23 +24,23 @@ interface InsuredBadgeProps {
 const COVERAGES = [
   {
     icon: faShieldAlt,
-    title: 'Professional Liability',
-    detail: '$1,000,000 per claim / $2,000,000 aggregate',
+    title: 'General Liability Insurance',
+    detail: 'Full liability coverage on every project',
   },
   {
     icon: faBuilding,
-    title: 'Technology Services',
-    detail: 'Web design, software, marketing & more',
+    title: 'Certified Coatings · Bonded & Insured',
+    detail: 'Licensed contractor for Central Texas work',
   },
   {
     icon: faBriefcase,
-    title: 'Cyber Insurance',
-    detail: '$100,000 coverage included',
+    title: 'Certified Coatings Installers',
+    detail: 'Epoxy and floor coating coated by local Waco crews',
   },
   {
     icon: faFileContract,
-    title: 'Insurer',
-    detail: 'Next Insurance US Company — since 04/13/2026',
+    title: 'Craftsmanship Warranty',
+    detail: '5-year warranty on every completed project',
   },
 ];
 
@@ -55,7 +55,7 @@ const InsuredBadge: React.FC<InsuredBadgeProps> = ({
       <div className={styles.inlineBadge}>
         <FontAwesomeIcon icon={faShieldAlt} className={styles.inlineIcon} />
         <span className={styles.inlineText}>
-          Professionally Insured — $1M / $2M Professional Liability
+          Certified Coatings · Bonded & Insured · bonded & insured · Certified Coatings Installers
         </span>
       </div>
     );
@@ -86,12 +86,13 @@ const InsuredBadge: React.FC<InsuredBadgeProps> = ({
           <div className={styles.headerText}>
             <div className={styles.eyebrow}>
               <FontAwesomeIcon icon={faCheckCircle} />
-              Verified & Active Coverage
+              Verified Credentials
             </div>
-            <h2 className={styles.title}>We&apos;re Professionally Insured</h2>
+            <h2 className={styles.title}>We&apos;re Licensed &amp; Insured</h2>
             <p className={styles.subtitle}>
-              Every project we take on is backed by professional liability insurance through
-              Next Insurance US Company. You get peace of mind — and we get to work with integrity.
+              Every project we take on is backed by general liability insurance, a licensed
+              contractor, and our 5-Year Coating Warranty. You get peace of mind —
+              and we get to craft with integrity.
             </p>
           </div>
         </motion.div>
@@ -128,16 +129,16 @@ const InsuredBadge: React.FC<InsuredBadgeProps> = ({
           transition={{ delay: 0.4, duration: 0.5 }}
         >
           <div className={styles.policyInfo}>
-            <span className={styles.policyLabel}>Policy Number</span>
-            <span className={styles.policyNum}>NXTVXJHYYL-00-PL</span>
+            <span className={styles.policyLabel}>Credential</span>
+            <span className={styles.policyNum}>Licensed &amp; Bonded GC</span>
           </div>
           <div className={styles.policyInfo}>
-            <span className={styles.policyLabel}>Policy Start</span>
-            <span className={styles.policyNum}>04/13/2026</span>
+            <span className={styles.policyLabel}>Building Since</span>
+            <span className={styles.policyNum}>2012</span>
           </div>
           <div className={styles.policyInfo}>
-            <span className={styles.policyLabel}>Insurer</span>
-            <span className={styles.policyNum}>Next Insurance US Company</span>
+            <span className={styles.policyLabel}>Association</span>
+            <span className={styles.policyNum}>AGC of America</span>
           </div>
           <Link
             href={ctaLink}

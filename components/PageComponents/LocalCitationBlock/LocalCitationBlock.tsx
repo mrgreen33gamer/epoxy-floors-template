@@ -18,17 +18,17 @@ interface LocalCitationBlockProps {
 }
 
 const DEFAULT_HOURS: HoursEntry[] = [
-  { days: 'Monday – Friday', hours: '7:00 AM – 7:00 PM' },
-  { days: 'Saturday',        hours: '8:00 AM – 5:00 PM' },
-  { days: 'Sunday',          hours: 'Emergency Only' },
+  { days: 'Monday – Friday', hours: '7:00 AM – 6:00 PM' },
+  { days: 'Saturday',        hours: '8:00 AM – 2:00 PM' },
+  { days: 'Sunday',          hours: 'Closed' },
 ];
 
 const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
-  businessName  = 'Arctic Air HVAC',
-  address       = 'Waco, TX 76701',
-  phone         = '(254) 900-1234',
-  email         = 'service@arcticairhvac.com',
-  googleMapsUrl = 'https://maps.google.com/?q=Arctic+Air+HVAC+Waco+TX',
+  businessName  = 'PolyCoat Floors',
+  address       = '3300 Lake Air Dr, Waco, TX 76710',
+  phone         = '(254) 980-1919',
+  email         = 'hello@polycoatfloors.com',
+  googleMapsUrl = 'https://maps.google.com/?q=PolyCoat+Epoxyry+Waco+TX',
   hours         = DEFAULT_HOURS,
   cityName      = 'Waco',
 }) => {
@@ -37,7 +37,7 @@ const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
       className={styles.section}
       aria-label="Business Contact Information"
       itemScope
-      itemType="https://schema.org/HVACBusiness"
+      itemType="https://schema.org/HomeAndConstructionBusiness"
     >
       <div className={styles.container}>
 
@@ -45,7 +45,7 @@ const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
           <span className={styles.eyebrow}>Find Us</span>
           <h2 className={styles.title} itemProp="name">{businessName}</h2>
           <p className={styles.subtitle}>
-            Based in {cityName}, TX — serving all of Central Texas with licensed HVAC technicians.
+            Based in {cityName}, TX — serving all of Central Texas with custom garage floors, metallic floors, and flake systems.
           </p>
         </div>
 

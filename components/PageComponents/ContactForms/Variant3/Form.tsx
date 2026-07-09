@@ -3,14 +3,14 @@
 //        'spot' prop is used as section so the admin dashboard can attribute
 //        conversions to the exact page/placement.
 'use client';
-import { useState, useRef } from 'react';
+import {
+  useState, useRef } from 'react';
 import styles from './styles.module.scss';
 import { PulseLoader } from 'react-spinners';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleCheck, faExclamationTriangle, faPaperPlane,
-  faUser, faEnvelope, faPhone, faLocationDot, faCalendarDays,
+  faCircleCheck, faExclamationTriangle, faPaperPlane, faUser, faEnvelope, faPhone, faLocationDot, faCalendarDays, faWarehouse, faGem, faShieldHalved, faPaintRoller, faIndustry, faWrench, faBolt, faArrowRight, faStar, faClock, faTag
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -24,7 +24,7 @@ const TIME_PREFS = ['Morning (7am–12pm)', 'Afternoon (12pm–5pm)', 'Evening (
 
 const FIELDS = [
   { num: '01', id: 'v3-name',    name: 'name',    type: 'text',  label: 'Full Name',     icon: faUser,        placeholder: 'Jane Smith',           required: true  },
-  { num: '02', id: 'v3-phone',   name: 'phone',   type: 'tel',   label: 'Phone Number',  icon: faPhone,       placeholder: '(254) 555-0100',        required: true  },
+  { num: '02', id: 'v3-phone',   name: 'phone',   type: 'tel',   label: 'Phone Number',  icon: faPhone,       placeholder: '(254) 980-1919',        required: true  },
   { num: '03', id: 'v3-email',   name: 'email',   type: 'email', label: 'Email Address', icon: faEnvelope,    placeholder: 'jane@example.com',       required: true  },
   { num: '04', id: 'v3-address', name: 'address', type: 'text',  label: 'Service Address',icon: faLocationDot, placeholder: '123 Main St, Waco TX',   required: false },
 ];
@@ -77,7 +77,7 @@ export default function Variant3({ title, cityName, slug, spot, formVariant }: V
               <polyline points="8 6 12 2 16 6"/><polyline points="8 18 12 22 16 18"/>
               <polyline points="6 8 2 12 6 16"/><polyline points="18 8 22 12 18 16"/>
             </svg>
-            Arctic Air HVAC
+            PolyCoat Cabinetry & Millwork
           </span>
           <span className={styles.railDivider} aria-hidden="true" />
           <span className={styles.railLabel}>{cityName}, TX · Free Estimate</span>
