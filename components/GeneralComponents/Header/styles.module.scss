@@ -265,3 +265,23 @@
   -webkit-backdrop-filter: blur(16px) !important;
 }
 /* end header pattern */
+
+/* === MOBILE HEADER SAFETY (fleet QA) === */
+@media (max-width: 768px) {
+  .logoName {
+    font-size: clamp(0.9rem, 3.8vw, 1.15rem) !important;
+    max-width: min(58vw, 220px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .logoTagline {
+    max-width: min(58vw, 220px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hamburger {
+    flex-shrink: 0 !important;
+  }
+}
