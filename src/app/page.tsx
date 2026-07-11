@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "Concrete Polish",
       body: "Polished concrete for modern homes and commercial spaces — refined sheen and easy maintenance.",
       link: "/services/concrete-polish",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faWrench,
       title: "Floor Repair & Recoat",
       body: "Peeling epoxy repair, failed coating removal, and professional recoats with honest diagnosis.",
       link: "/services/floor-repair-recoat",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 

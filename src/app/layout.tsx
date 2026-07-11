@@ -116,7 +116,7 @@ export const metadata: Metadata = {
     siteName: "PolyCoat Floors",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 4000,
         height: 630,
         alt: "PolyCoat Floors — Waco TX Garage Epoxy · Metallic floors · Flake Systems",
@@ -130,7 +130,7 @@ export const metadata: Metadata = {
     title: "PolyCoat Floors | Waco TX Epoxy Flooring Contractor",
     description:
       "Garage Epoxy, metallic floors, flake systems, metallic epoxy & commercial floor coating for Central Texas. certified coatings · 5-Year Coating Warranty.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,

@@ -83,7 +83,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({ cityName }) => {
           <div className={styles.imageFrame}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/pages/about/about-hero.jpg"
+                src="/pages/home/welcome/hero-main.jpg"
                 alt="PolyCoat Floors & Tile Co. — Waco, Texas flooring installers"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
