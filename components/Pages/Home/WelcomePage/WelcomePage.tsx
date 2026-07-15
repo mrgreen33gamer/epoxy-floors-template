@@ -1,134 +1,29 @@
-// _archetype-library/hero-b-before-after/Component.tsx
-//
-// Hero B: Before / After — left copy, right full drag-to-reveal image comparison.
-// Interactive range slider + pointer drag. Accessible via role="slider" + range input.
+// Epoxy Floors Hero — Gloss Industrial (cyan-on-obsidian)
+// Photographic parallax stage + an authentic installer photo card replaces the
+// before/after drag-to-reveal panel. Real jobsite imagery (glossy epoxy floor +
+// installers applying a self-leveling coating), cyan detailing, Orbitron/Exo 2 type.
+// Photos sourced from Pexels (Craftsman Concrete Floors, Dallas/Houston TX) and
+// saved locally in /public/pages/home/welcome — now wired into the hero.
 'use client';
-import React, { useCallback, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-function BeforeAfterSlider({
-  beforeImageSrc,
-  afterImageSrc,
-  beforeLabel = 'Before',
-  afterLabel = 'After',
-}: {
-  beforeImageSrc: string;
-  afterImageSrc: string;
-  beforeLabel?: string;
-  afterLabel?: string;
-}) {
-  const [position, setPosition] = useState(50);
-  const frameRef = useRef<HTMLDivElement>(null);
-  const dragging = useRef(false);
-
-  const setFromClientX = useCallback((clientX: number) => {
-    const el = frameRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.width <= 0) return;
-    const pct = ((clientX - rect.left) / rect.width) * 100;
-    setPosition(Math.min(100, Math.max(0, pct)));
-  }, []);
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    dragging.current = true;
-    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-    setFromClientX(e.clientX);
-  };
-
-  const onPointerMove = (e: React.PointerEvent) => {
-    if (!dragging.current) return;
-    setFromClientX(e.clientX);
-  };
-
-  const onPointerUp = () => {
-    dragging.current = false;
-  };
-
-  const onRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPosition(Number(e.target.value));
-  };
-
-  const onKeyDown = (e: React.KeyboardEvent) => {
-    const step = e.shiftKey ? 10 : 2;
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
-      e.preventDefault();
-      setPosition((p) => Math.max(0, p - step));
-    } else if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
-      e.preventDefault();
-      setPosition((p) => Math.min(100, p + step));
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      setPosition(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      setPosition(100);
-    }
-  };
-
-  return (
-    <div className={styles.baFrame} ref={frameRef}>
-      <img
-        src={afterImageSrc}
-        alt={afterLabel}
-        className={styles.baImage}
-        draggable={false}
-      />
-      <div
-        className={styles.baBeforeClip}
-        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
-      >
-        <img
-          src={beforeImageSrc}
-          alt={beforeLabel}
-          className={styles.baImage}
-          draggable={false}
-        />
-      </div>
-
-      <span className={`${styles.baLabel} ${styles.baLabelBefore}`}>{beforeLabel}</span>
-      <span className={`${styles.baLabel} ${styles.baLabelAfter}`}>{afterLabel}</span>
-
-      <div
-        className={styles.baDivider}
-        style={{ left: `${position}%` }}
-        aria-hidden="true"
-      >
-        <div className={styles.baHandle}>
-          <span className={styles.baHandleArrow} data-dir="left" />
-          <span className={styles.baHandleArrow} data-dir="right" />
-        </div>
-      </div>
-
-      {/* Accessible control — full-area range for pointer + keyboard */}
-      <input
-        type="range"
-        className={styles.baRange}
-        min={0}
-        max={100}
-        step={0.5}
-        value={position}
-        onChange={onRangeChange}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-        onKeyDown={onKeyDown}
-        aria-label="Before and after reveal"
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(position)}
-        aria-valuetext={`${Math.round(position)} percent before image`}
-        role="slider"
-      />
-    </div>
-  );
-}
-
 export default function WelcomePage() {
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '16%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, reduceMotion ? 1.08 : 1.16]);
+
 const badgeText = 'Waco\'s Trusted Epoxy Flooring Contractor — Since 2014';
 const headlineLines = [
   'Garage Epoxy. Metallic.',
@@ -145,70 +40,26 @@ const chips = [
   '12+ Yrs Local',
   '5-Yr Warranty',
 ];
-const stats = [
-  {
-    "value": "500+",
-    "label": "Jobs Done"
-  },
-  {
-    "value": "4.9 ★",
-    "label": "Rating"
-  },
-  {
-    "value": "15+",
-    "label": "Years Local"
-  },
-  {
-    "value": "1-Yr",
-    "label": "Warranty"
-  }
-];
-const meterTarget = 72;
-const meterTopLabel = "After";
-const meterMidLabel = "During";
-const meterBotLabel = "Before";
-const particleColor = '#22d3ee';
-const beforeImageSrc = '/pages/home/welcome/before.jpg';
-const afterImageSrc = '/pages/home/welcome/after.jpg';
-const beforeLabel = "Stained concrete";
-const afterLabel = "Full flake system";
-const mapCenterLabel = 'Service HQ';
-const mapPins = [
-  { label: 'Waco', x: 42, y: 48 },
-  { label: 'Temple', x: 68, y: 62 },
-  { label: 'Killeen', x: 58, y: 72 },
-];
-const coverageLabel = 'Central Texas coverage';
-const materials = [
-  { name: "Gunmetal Flake", swatch: "#22d3ee", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Metallic Blue", swatch: "#06b6d4", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "Quartz", swatch: "#67e8f9", imageSrc: "/pages/home/welcome/mat-3.jpg" },
-  { name: "Safety Strip", swatch: "#a5f3fc", imageSrc: "/pages/home/welcome/mat-1.jpg" },
-  { name: "Commercial", swatch: "#0891b2", imageSrc: "/pages/home/welcome/mat-2.jpg" },
-  { name: "UV Topcoat", swatch: "#155e75", imageSrc: "/pages/home/welcome/mat-3.jpg" }
-];
-const quote = "Garage went from oil stains to showroom. Hot-tire pickup? None. Prep was serious.";
-const authorName = "Brett K.";
-const authorMeta = "Garage epoxy · Hewitt";
-const rating = 5;
-const schematicLabel = "PolyCoat schematic";
-const gauges = [
-  { label: "Floors", value: "1,900+" },
-  { label: "Rating", value: "4.9 ★" },
-  { label: "Cure", value: "Managed" },
-  { label: "Warranty", value: "Multi-yr" }
-];
-const toggles = [
-  { label: "Before/after", on: true },
-  { label: "Weekend slots", on: true },
-  { label: "Photo proofs", on: true }
-];
-const textureSrc = '/pages/home/welcome/hero-main.jpg';
-const textureAlt = 'Texture';
-const accentWord = "PolyCoat";
 
   return (
-    <section className={styles.hero} aria-label="Hero">
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — genuine glossy epoxy floor, industrial facility */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-epoxy-floor.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Obsidian/cyan scrim keeps the jobsite photo on-brand and the headline legible */}
+      <div className={styles.scrim} aria-hidden="true" />
       <div className={styles.shard} aria-hidden="true" />
 
       <div className={styles.layout}>
@@ -272,18 +123,39 @@ const accentWord = "PolyCoat";
           </motion.div>
         </div>
 
+        {/* Authentic jobsite photo — installers applying a self-leveling epoxy
+            coating, framed as a spec card. Visible on desktop AND mobile. */}
         <motion.div
           className={styles.visual}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.28, ease: 'easeOut' }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.28 }}
         >
-          <BeforeAfterSlider
-            beforeImageSrc={beforeImageSrc}
-            afterImageSrc={afterImageSrc}
-            beforeLabel={beforeLabel}
-            afterLabel={afterLabel}
-          />
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/hero-epoxy-application.jpg"
+              alt="Certified installers in hard hats and safety vests squeegeeing a self-leveling epoxy coating across a commercial floor"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 460px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              Certified Installers · On-Site
+            </div>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Certified installers
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 5-Year coating warranty
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
